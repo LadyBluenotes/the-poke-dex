@@ -10,6 +10,7 @@ function App() {
   const [nextPageUrl, setNextPageUrl] = useState('https://pokeapi.co/api/v2/pokemon-species');
   const [prevPageUrl, setPrevPageUrl] = useState('https://pokeapi.co/api/v2/pokemon-species');
   const [loading, setLoading] = useState(true);
+  const [pokemonCount, setPokemonCount] = useState('https://pokeapi.co/api/v2/pokemon-species');
 
   useEffect(() => {
     setLoading(true)
@@ -21,6 +22,7 @@ function App() {
       setNextPageUrl(res.data.next)
       setPrevPageUrl(res.data.previous)
       setPokemon(res.data.results.map(p => p.name))
+      setPokemonCount(res.data.count)
       })
 
     return () => cancel()
@@ -34,11 +36,16 @@ function App() {
     setCurrentPageUrl(prevPageUrl)
   }
 
+  function getPokemonCount() {
+    return pokemonCount
+  }
+
   if (loading) return "Loading..."
 
   return (
     <>
     <h1>PokeDex</h1>
+    <h2>{getPokemonCount()}</h2>
       <PokemonList pokemon={pokemon} />
       <Pagination 
         gotoNextPage={nextPageUrl ? gotoNextPage : null }
@@ -50,8 +57,6 @@ function App() {
 
 export default App;
 
-
-// add total pokemon count
 
 // add what number each pokemon is
 
