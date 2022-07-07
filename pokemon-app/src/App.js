@@ -1,8 +1,11 @@
+import React, { useState } from 'react';
+import PokemonList from './PokemonList';
+
 function App() {
+  const [pokemon, setPokemon] = useState(['pikachu', 'bulbasaur']);
+  
   return (
-    <div className="App">
-      null
-    </div>
+    null
   );
 }
 
