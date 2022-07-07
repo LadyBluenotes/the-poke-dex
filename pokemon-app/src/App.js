@@ -5,7 +5,7 @@ function App() {
   const [pokemon, setPokemon] = useState(['pikachu', 'bulbasaur']);
   
   return (
-    null
+    <PokemonList pokemon={pokemon} />
   );
 }
 

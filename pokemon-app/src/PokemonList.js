@@ -3,9 +3,9 @@ import React from 'react'
 export default function PokemonList({ pokemon }) {
   return (
     <div>
-        {PokemonList.map(pokemon => (
-            <div key={pokemon}>{pokemon}</div>
-        ))}
+      {pokemon.map(p => (
+        <div key={p}>{p}</div>
+      ))}
     </div>
   )
 }
