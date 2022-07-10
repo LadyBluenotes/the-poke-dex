@@ -5,12 +5,14 @@ import Pagination from './Pagination';
 import axios from 'axios';
 
 function App() {
+  const url = 'https://pokeapi.co/api/v2/pokemon-species';
+  const pokemonURL = 'https://pokeapi.co/api/v2/pokemon/';
   const [pokemon, setPokemon] = useState([]);
-  const [currentPageUrl, setCurrentPageUrl] = useState('https://pokeapi.co/api/v2/pokemon-species');
-  const [nextPageUrl, setNextPageUrl] = useState('https://pokeapi.co/api/v2/pokemon-species');
-  const [prevPageUrl, setPrevPageUrl] = useState('https://pokeapi.co/api/v2/pokemon-species');
+  const [currentPageUrl, setCurrentPageUrl] = useState(url);
+  const [nextPageUrl, setNextPageUrl] = useState(url);
+  const [prevPageUrl, setPrevPageUrl] = useState(url);
   const [loading, setLoading] = useState(true);
-  const [pokemonCount, setPokemonCount] = useState('https://pokeapi.co/api/v2/pokemon-species');
+  const [pokemonCount, setPokemonCount] = useState(url);
 
   useEffect(() => {
     setLoading(true)
@@ -46,7 +48,7 @@ function App() {
     <>
     <h1>PokeDex</h1>
     <h2>{getPokemonCount()}</h2>
-      <PokemonList pokemon={pokemon} />
+      <PokemonList pokemon={pokemon} pokemonUrl={pokemonURL} />
       <Pagination 
         gotoNextPage={nextPageUrl ? gotoNextPage : null }
         gotoPrevPage={prevPageUrl ? gotoPrevPage : null }

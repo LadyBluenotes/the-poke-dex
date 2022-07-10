@@ -1,7 +1,7 @@
 import React from 'react'
 import './PokemonList.css'
 
-export default function PokemonList({ pokemon }) {
+export default function PokemonList({ pokemon, pokemonUrl }) {
 
   return (
     <div>
@@ -10,7 +10,7 @@ export default function PokemonList({ pokemon }) {
             <table>
               <tbody>
                 <tr>
-                  <td> {p}</td>
+                  <td><a href={ '/' + p}>{p}</a></td>
                 </tr>
               </tbody>
             </table>
