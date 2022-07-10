@@ -1,22 +1,16 @@
 import React from 'react'
 import './PokemonList.css'
 
-export default function PokemonList({ pokemon, pokemonUrl }) {
+export default function PokemonList({ pokemon}) {
 
   return (
-    <div>
-      {pokemon.map(p => (
-          <div key={p}>
-            <table>
-              <tbody>
-                <tr>
-                  <td><a href={ '/' + p}>{p}</a></td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
-      ))}
-    </div>
+    <table>
+      <tbody>
+        <tr>
+        {pokemon.map(p => (<td key={p}><a href={ '/' + p}>{p}</a></td>))}
+        </tr>
+      </tbody>
+    </table>
   )
 
 

@@ -64,9 +64,8 @@ export default App;
 
 // include a photo with each pokemon
 
-// pokemon can be clicked on for more data
-
-// make a page to display pokemon information ( 
+// can get api info for each pokemon through - href={pokemonUrl + p}
+  // make a page to display pokemon information ( 
   // base happiness, 
   // capture rate, 
   // growth rate, 
