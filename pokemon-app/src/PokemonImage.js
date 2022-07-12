@@ -1,7 +1,14 @@
-import React, { useEffect, useState } from 'react'
-import axios from 'axios';
+import React from 'react'
 
 export default function PokemonImage( { pokemon } ) {
+
+
+
+  return (
+    <div>
+
+    </div>
+    )
 
 
 }
