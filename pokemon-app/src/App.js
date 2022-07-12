@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
 import PokemonList from './PokemonList';
+import Navbar from './Navbar';
 import Pagination from './Pagination';
 import axios from 'axios';
 
 function App() {
   const url = 'https://pokeapi.co/api/v2/pokemon-species';
-  const pokemonURL = 'https://pokeapi.co/api/v2/pokemon/';
   const [pokemon, setPokemon] = useState([]);
   const [currentPageUrl, setCurrentPageUrl] = useState(url);
   const [nextPageUrl, setNextPageUrl] = useState(url);
@@ -14,17 +14,19 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [pokemonCount, setPokemonCount] = useState(url);
 
+
   useEffect(() => {
     setLoading(true)
     let cancel
     axios.get(currentPageUrl, {
       cancelToken: new axios.CancelToken(c => cancel = c)
-    }).then(res => {
-      setLoading(false)
-      setNextPageUrl(res.data.next)
-      setPrevPageUrl(res.data.previous)
-      setPokemon(res.data.results.map(p => p.name))
-      setPokemonCount(res.data.count)
+    })
+      .then(res => {
+        setLoading(false)
+        setNextPageUrl(res.data.next)
+        setPrevPageUrl(res.data.previous)
+        setPokemon(res.data.results.map(p => p.name))
+        setPokemonCount(res.data.count)
       })
 
     return () => cancel()
@@ -38,17 +40,12 @@ function App() {
     setCurrentPageUrl(prevPageUrl)
   }
 
-  function getPokemonCount() {
-    return pokemonCount
-  }
-
   if (loading) return "Loading..."
 
   return (
     <>
-    <h1>PokeDex</h1>
-    <h2>{getPokemonCount()}</h2>
-      <PokemonList pokemon={pokemon} pokemonUrl={pokemonURL} />
+      <Navbar pokemonCount={pokemonCount}/>
+      <PokemonList pokemon={pokemon}/>
       <Pagination 
         gotoNextPage={nextPageUrl ? gotoNextPage : null }
         gotoPrevPage={prevPageUrl ? gotoPrevPage : null }
