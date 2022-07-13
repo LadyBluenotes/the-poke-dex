@@ -6,13 +6,33 @@ import Pagination from './Pagination';
 import axios from 'axios';
 
 function App() {
-  const url = 'https://pokeapi.co/api/v2/pokemon-species';
-  const [pokemon, setPokemon] = useState([]);
+  const url = 'https://pokeapi.co/api/v2/pokemon-species/';
+  const [pokemon, setPokemon] = useState('bulbasaur');
+  const [pokemonData, setPokemonData] = useState([]);
+  const [pokemonType, setPokemonType] = useState('');
   const [currentPageUrl, setCurrentPageUrl] = useState(url);
   const [nextPageUrl, setNextPageUrl] = useState(url);
   const [prevPageUrl, setPrevPageUrl] = useState(url);
   const [loading, setLoading] = useState(true);
-  const [pokemonCount, setPokemonCount] = useState(url);
+
+  const getPokemon = async () => {
+    const toArray = [];
+    try {
+      const url = `https://pokeapi.co/api/v2/pokemon/${pokemon}`;
+      const res = await axios.get(url);
+      toArray.push(res.data);
+      setPokemonType(res.data.types[0].type.name);
+      setPokemonData(toArray);
+    } catch (e) {
+      console.log(e);
+    }
+  };
+  console.log(pokemonData);
+
+  useEffect(() => {
+    getPokemon();
+  }, [])
+  
 
 
   useEffect(() => {
@@ -26,7 +46,6 @@ function App() {
         setNextPageUrl(res.data.next)
         setPrevPageUrl(res.data.previous)
         setPokemon(res.data.results.map(p => p.name))
-        setPokemonCount(res.data.count)
       })
 
     return () => cancel()
@@ -44,7 +63,7 @@ function App() {
 
   return (
     <>
-      <Navbar pokemonCount={pokemonCount}/>
+      <Navbar/>
       <PokemonList pokemon={pokemon}/>
       <Pagination 
         gotoNextPage={nextPageUrl ? gotoNextPage : null }
