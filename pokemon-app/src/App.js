@@ -27,6 +27,7 @@ function App() {
         setNextPageUrl(res.data.next)
         setPrevPageUrl(res.data.previous)
         setPokemon(res.data.results.map(p => [p.name, p.url]));
+        console.log(res.data.results)
       })
 
     return () => cancel()

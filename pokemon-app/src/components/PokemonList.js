@@ -11,10 +11,9 @@ export default function PokemonList({ pokemon }) {
   return (
     <div className='wrapper'>
         {pokemon.map(p => (
-          <div key={p[0]}>
-            <span>{p[1].split('/')[6].toString().padStart(3, '0')}</span>
+          <div key={p[0]} className='pokemonBox'>
+            <span>#{p[1].split('/')[6].toString().padStart(3, '0')}<a className='pokemonName' href='#'>{capitalize(p[0])}</a></span>
             <img src={`https://img.pokemondb.net/artwork/large/${p[0]}.jpg`} alt={p[0]} />
-            <a className='pokemonName' href='#'>{capitalize(p[0])}</a>
             </div>
         ))}
         
