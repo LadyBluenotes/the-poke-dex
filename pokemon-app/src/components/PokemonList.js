@@ -13,6 +13,7 @@ export default function PokemonList({ pokemon }) {
         {pokemon.map(p => (
           <div key={p[0]}>
             <span>{p[1].split('/')[6]}</span>
+            <img src={`https://img.pokemondb.net/artwork/large/${p[0]}.jpg`} alt={p[0]} />
             <a className='pokemonName' href='#'>{capitalize(p[0])}</a>
             </div>
         ))}
