@@ -71,4 +71,8 @@ img {
     .wrapper {
         grid-template-columns: 1fr 1fr 1fr;
     }
+
+    .wrapper div {
+       height: 200px;
+    }
 }
