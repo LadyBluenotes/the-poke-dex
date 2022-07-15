@@ -41,6 +41,7 @@
 
 .pokemonName {
     font-weight: bold;
+    padding-right: 7px;
     margin-left: 5%;
     text-align: center;
     letter-spacing: 1px;
@@ -93,12 +94,6 @@ img {
         height: auto;
     }
 
-    .wrapper span {
-        padding: 0.5rem;
-        margin: 0.5rem;
-        height: 1rem;
-    }
-
     .pokemonBox {
         height: 300px;
     }
@@ -107,12 +102,5 @@ img {
 @media (min-width: 800px) and (max-width: 1200px) {
     .wrapper {
         grid-template-columns: 1fr 1fr 1fr;
-
-    }
-
-    .wrapper span {
-        padding: 0.5rem;
-        margin: 0.5rem;
-        height: 1rem;
     }
 }
