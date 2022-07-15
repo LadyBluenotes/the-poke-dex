@@ -46,6 +46,10 @@
     letter-spacing: 1px;
 }
 
+.textDisplay {
+    display: none;
+}
+
 a {
     text-decoration: none;
     color: black;
@@ -62,7 +66,13 @@ img {
     max-width: 230px;
 }
 
-@media screen and (max-width: 580px) {
+
+
+@media screen and (max-width: 400px) {
+
+}
+
+@media (min-width: 400px) and (max-width: 580px) {
     .wrapper {
         grid-template-columns: 1fr;
         row-gap: 1rem;
