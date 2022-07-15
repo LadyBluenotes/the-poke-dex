@@ -45,16 +45,16 @@
     margin-left: 5%;
     text-align: center;
     letter-spacing: 1px;
+    margin-top: 5px;
+    cursor: pointer;
 }
 
 .textDisplay {
     display: none;
 }
 
-a {
-    text-decoration: none;
-    color: black;
-
+.pokemonIdentifier {
+    cursor: pointer;
 }
 
 img {
@@ -70,7 +70,9 @@ img {
 
 
 @media screen and (max-width: 400px) {
-
+    *{
+        display:none;
+    }
 }
 
 @media (min-width: 400px) and (max-width: 580px) {

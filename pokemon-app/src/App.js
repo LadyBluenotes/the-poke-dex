@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-import PokemonList from './components/PokemonList';
+import PokemonList from './components/Pokemon';
 import Navbar from './components/Navbar';
 import Pagination from './components/Pagination';
 import axios from 'axios';
@@ -27,7 +27,6 @@ function App() {
         setNextPageUrl(res.data.next)
         setPrevPageUrl(res.data.previous)
         setPokemon(res.data.results.map(p => [p.name, p.url]));
-        console.log(res.data.results)
       })
 
     return () => cancel()
@@ -59,11 +58,6 @@ function App() {
   }
 
 export default App;
-
-
-// // add what number each pokemon is
-
-// // include a photo with each pokemon
 
 // // can get api info for each pokemon through - href={pokemonUrl + p}
 //   // make a page to display pokemon information ( 

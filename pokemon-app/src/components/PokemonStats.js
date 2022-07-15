@@ -1,25 +1,12 @@
-import React, { useState } from 'react'
+import React, { Component } from 'react';
+import axios from 'axios';
 
-export default function PokemonStats() {
+export default class PokemonStats extends Component {
   
-  state = {
-    name: '',
-    type: '',
-    height: '',
-    weight: '',
-    games: '',
-    abilities: '',
-    moves: '',
-    levelLearnedAt: '',
-    baseHp: '',
-    baseAttack: '',
-    baseDefense: '',
-    baseSpAttack: '',
-    baseSpDefense: '',
-    baseSpeed: '',
+  render() {
+    return (
+      <div>
+      </div>
+    );
   }
-
-  return (
-    <div>PokemonStats</div>
-  )
 }
