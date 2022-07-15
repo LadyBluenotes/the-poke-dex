@@ -46,11 +46,14 @@ function App() {
   return (
     <>
       <Navbar/>
-      <PokemonList pokemon={pokemon} />
-      <Pagination 
-        gotoNextPage={nextPageUrl ? gotoNextPage : null }
-        gotoPrevPage={prevPageUrl ? gotoPrevPage : null }
-      />
+      <div className='content'>
+        <PokemonList pokemon={pokemon} />
+        <Pagination 
+          gotoNextPage={nextPageUrl ? gotoNextPage : null }
+          gotoPrevPage={prevPageUrl ? gotoPrevPage : null }
+        />
+      </div>
+      
     </>
   );
   }

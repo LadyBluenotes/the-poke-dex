@@ -1,3 +1,11 @@
 * {
     font-family: 'Source Sans Pro', sans-serif;
 }
+
+body {
+    margin: 0;
+}
+
+.content {
+    background-color: #dd2120;
+}
