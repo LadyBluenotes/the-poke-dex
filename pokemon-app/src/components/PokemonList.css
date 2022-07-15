@@ -53,10 +53,13 @@ a {
 }
 
 img {
+    display: block;
     object-fit: contain;
     padding-bottom: 20px;
     margin: auto;
     height: 200px;
+    min-width: 200px;
+    max-width: 230px;
 }
 
 @media screen and (max-width: 580px) {
@@ -67,7 +70,6 @@ img {
 
     img {
         height: 200px;
-        max-width: 230px;
     }
 
     .pokemonName {
