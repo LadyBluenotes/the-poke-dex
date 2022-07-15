@@ -14,16 +14,17 @@ function Navbar( {}) {
 
   return (
     <nav>
-        <h1>PokeDex</h1>
-        {/* <form onSubmit={handleSubmit}>
-        <label>
-          <input
-            type="text"
-            onChange={handleChange}
-            placeholder="Search for a Pokemon"
-          />
-        </label>
-      </form> */}
+      <h1 className='title'>PokeDex</h1>
+      <div className='navSearch'>
+        <form>
+          <label>
+            <input
+              type="text"
+              placeholder="Search for a Pokemon"
+            />
+          </label>
+        </form>
+      </div>
     </nav>
   )
 }
