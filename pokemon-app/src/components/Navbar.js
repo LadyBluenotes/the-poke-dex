@@ -12,6 +12,10 @@ function Navbar( {}) {
   //   getPokemon();
   // };
 
+  // const searchPokemon = (searchValue) => {
+  //   setSearchInput(searchValue)
+  // }
+
   return (
     <nav className='navigation'>
       <h1 className='title'>PokeDex</h1>
@@ -21,6 +25,9 @@ function Navbar( {}) {
             <input
               type="text"
               placeholder="Search for a Pokemon"
+              onChange={(e) => {
+                searchItems(e.target.value)
+              }}
             />
           </label>
         </form>
