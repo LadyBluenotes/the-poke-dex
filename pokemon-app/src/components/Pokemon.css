@@ -90,7 +90,7 @@ img {
     }
 }
 
-@media (min-width: 581px) and (max-width: 800px) {
+@media (min-width: 581px) and (max-width: 850px) {
     .wrapper {
         grid-template-columns: 1fr 1fr;
         height: auto;
@@ -101,7 +101,7 @@ img {
     }
 }
 
-@media (min-width: 800px) and (max-width: 1200px) {
+@media (min-width: 851px) and (max-width: 1200px) {
     .wrapper {
         grid-template-columns: 1fr 1fr 1fr;
     }

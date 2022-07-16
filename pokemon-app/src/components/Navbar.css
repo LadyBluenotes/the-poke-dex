@@ -1,3 +1,6 @@
+@import url('http://fonts.cdnfonts.com/css/pok');
+                
+
 .navigation {
     display: flex;
     height: 70px;
@@ -7,16 +10,13 @@
 
 .title{
     color: #ffcb05;
-    font-weight: 400;
-    font-family: 'Pokemon Solid', sans-serif;
+    font-family: 'Press Start 2P', cursive;                        
     text-shadow: -2px -2px 0 #3466af, 2px -2px 0 #3466af, -2px 2px 0 #3466af, 2px 2px 0 #3466af;
     width: 50%;
-    margin-top: 10px;
+    margin-top: 25px;
     margin-left: 15px;
-    line-height: normal;
-    font-size: 2.5rem;
+    font-size: 1.5rem;
     font-weight: bold;
-    justify-content: flex-start;
 }
 
 .navSearch {
@@ -31,6 +31,6 @@ input {
     border-radius: 50px;
     font-size: 1rem;
     padding-left: 10px;
-    margin-top: 20px;
+    margin-top: 18px;
     margin-right: 15px;
 }
