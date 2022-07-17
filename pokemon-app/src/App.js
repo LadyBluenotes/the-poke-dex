@@ -18,11 +18,11 @@ function App() {
     <Router>
       <Navbar />
         <Switch>
-          <Route 
-            path="/" 
-            component={props => <AllPokemon { ... props} />} 
-          />
-          <Route 
+            <Route 
+              path="/" 
+              component={props => <AllPokemon { ... props} />} 
+            />
+            <Route 
             path="/:pokemonIndex" 
             children={({match}) => 
             <PokemonDetails pokemonIndex={match}/>

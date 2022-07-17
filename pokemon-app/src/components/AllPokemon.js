@@ -4,6 +4,7 @@ import PokemonCard from './PokemonCard';
 import './AllPokemon.css';
 
 import axios from 'axios';
+import { Grid } from '@mui/material';
 
 
 export default class PokemonList extends Component {
@@ -21,25 +22,28 @@ export default class PokemonList extends Component {
   }
 
   render() {
-
     return (
-      <div>
+      <Grid 
+        container
+        direction="row"
+        justifyContent="center"
+        alignItems="center"
+      >
         {this.state.pokemon ? (
-          <div>
-            {this.state.pokemon.map(pokemon => (
-              <PokemonCard
-                key={pokemon.name}
-                name={pokemon.name}
-                url={pokemon.url}
-              />
-            ))}
-          </div>
-        ) : (
-          <div>
-            <h2>Loading...</h2>
-          </div>
-        )}
-      </div>
+          this.state.pokemon.map(pokemon => (
+            <Grid 
+              item 
+              xs={12} sm={6} md={4} xl={3}
+              >
+                <PokemonCard
+                  key={pokemon.name}
+                  name={pokemon.name}
+                  url={pokemon.url}
+                />
+            </Grid>
+            ))
+        ) : (<Grid item xs={12}>Loading...</Grid>)}
+    </ Grid>
     );
   }
 }
