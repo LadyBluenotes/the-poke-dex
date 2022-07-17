@@ -14,9 +14,13 @@ function Navbar({}) {
     }
   }
 
+  const goHome = () => {
+    window.location.href = '/'
+  }
+
   return (
     <nav className='navigation'>
-      <h1 className='title'>PokeDex</h1>
+      <h1 className='title' onClick={goHome}>PokeDex</h1>
         <div className='navSearch'>
           <form>
             <label>
