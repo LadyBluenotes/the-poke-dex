@@ -67,9 +67,14 @@ button {
     margin: 1rem;
 }
 
+span {
+    display: flex;
+}
+
 a {
     text-decoration: none;
     color: black;
+    cursor: pointer;
 }
 
 .pagination {

@@ -36,8 +36,10 @@ componentDidMount() {
             <div className='wrapper'>
                 <div className='pokeNameBox'>
                     <span className='pokemonIdentifier'>
-                        #{this.state.pokemonIndex}
-                        <a className='pokemonName' href={`/pokemon/${this.state.pokemonIndex}`}>{this.state.name}</a>
+                        <Link to={`/pokemon/${this.state.pokemonIndex}`}>
+                            <h4 className='pokemonIndex'>#{this.state.pokemonIndex}</h4>
+                            <h4 className='pokemonName'>{this.state.name}</h4>
+                        </Link>
                     </span>
                     <img src={this.state.imageUrl} alt={this.state.name} />
                 </div>
