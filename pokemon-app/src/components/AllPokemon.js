@@ -11,13 +11,46 @@ export default class PokemonList extends Component {
 
   state = {
     url: 'https://pokeapi.co/api/v2/pokemon/',
-    pokemon: null
+    pokemon: null,
+    nextPageUrl: null,
+    prevPageUrl: null
   };
 
   async componentDidMount() {
     const res = await axios.get(this.state.url);
     this.setState({ 
-      pokemon: res.data['results'] 
+      pokemon: res.data['results'],
+      nextPageUrl: res.data['next'],
+      prevPageUrl: res.data['previous']
+    });
+  }
+
+  async componentDidUpdate(prevProps, prevState) {
+    if (prevState.url !== this.state.url) {
+      const res = await axios.get(this.state.url);
+      this.setState({
+        pokemon: res.data['results'],
+        nextPageUrl: res.data['next'],
+        prevPageUrl: res.data['previous']
+      });
+    }
+  }
+
+  handleNextPage = async () => {
+    const res = await axios.get(this.state.nextPageUrl);
+    this.setState({
+      pokemon: res.data['results'],
+      nextPageUrl: res.data['next'],
+      prevPageUrl: res.data['previous']
+    });
+  }
+
+  handlePrevPage = async () => {
+    const res = await axios.get(this.state.prevPageUrl);
+    this.setState({
+      pokemon: res.data['results'],
+      nextPageUrl: res.data['next'],
+      prevPageUrl: res.data['previous']
     });
   }
 
@@ -48,6 +81,10 @@ export default class PokemonList extends Component {
           <p>Loading...</p>
         )}
         </Grid>
+        <div className="pagination">
+          <button onClick={this.handlePrevPage}>Prev</button>
+          <button onClick={this.handleNextPage}>Next</button>
+        </div>
       </>
     );
   }

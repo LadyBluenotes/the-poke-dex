@@ -7,7 +7,6 @@ import {
 import './App.css';
 
 import Navbar from './components/Navbar';
-import Pagination from './components/Pagination';
 import AllPokemon from './components/AllPokemon';
 
 import PokemonDetails from './components/PokemonDetails'
@@ -29,7 +28,6 @@ function App() {
             } 
           />
         </Switch>
-      <Pagination />
     </Router>
   );
 }
