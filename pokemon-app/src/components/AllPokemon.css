@@ -54,7 +54,7 @@ a {
     color: black;
 }
 
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 320px) {
     *{
         display:none;
     }

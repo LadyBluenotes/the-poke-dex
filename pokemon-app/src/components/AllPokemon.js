@@ -23,12 +23,14 @@ export default class PokemonList extends Component {
 
   render() {
     return (
-      <Grid 
+      <>
+        <Grid 
         container
         direction="row"
         justifyContent="center"
         alignItems="center"
-      >
+        spacing={1}
+          >
         {this.state.pokemon ? (
           this.state.pokemon.map(pokemon => (
             <Grid 
@@ -42,8 +44,11 @@ export default class PokemonList extends Component {
                 />
             </Grid>
             ))
-        ) : (<Grid item xs={12}>Loading...</Grid>)}
-    </ Grid>
+        ) : (
+          <p>Loading...</p>
+        )}
+        </Grid>
+      </>
     );
   }
 }
