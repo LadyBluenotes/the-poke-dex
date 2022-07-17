@@ -1,77 +1,37 @@
-import React, { useState, useEffect } from 'react';
+import { 
+  BrowserRouter as Router,
+  Route,
+  Switch
+} from 'react-router-dom';
+
 import './App.css';
-import PokemonList from './components/Pokemon';
+
 import Navbar from './components/Navbar';
 import Pagination from './components/Pagination';
-import axios from 'axios';
+import AllPokemon from './components/AllPokemon';
+
+import PokemonDetails from './components/PokemonDetails'
 
 function App() {
-  const url = 'https://pokeapi.co/api/v2/pokemon/';
-  const [pokemonData, setPokemonData] = useState([]);
-  const [pokemonType, setPokemonType] = useState('');
-
-  const [pokemon, setPokemon] = useState(url);
-  const [currentPageUrl, setCurrentPageUrl] = useState(url);
-  const [nextPageUrl, setNextPageUrl] = useState(url);
-  const [prevPageUrl, setPrevPageUrl] = useState(url);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    setLoading(true)
-    let cancel
-    axios.get(currentPageUrl, {
-      cancelToken: new axios.CancelToken(c => cancel = c)
-    })
-      .then(res => {
-        setLoading(false)
-        setNextPageUrl(res.data.next)
-        setPrevPageUrl(res.data.previous)
-        setPokemon(res.data.results.map(p => [p.name, p.url]));
-      })
-
-    return () => cancel()
-  }, [currentPageUrl])
-
-  function gotoNextPage() {
-    setCurrentPageUrl(nextPageUrl)
-  }
-
-  function gotoPrevPage() {
-    setCurrentPageUrl(prevPageUrl)
-  }
-
-  if (loading) return "Loading..."
 
   return (
-    <>
-      <Navbar/>
-      <div className='content'>
-        <PokemonList pokemon={pokemon} />
-        <Pagination 
-          gotoNextPage={nextPageUrl ? gotoNextPage : null }
-          gotoPrevPage={prevPageUrl ? gotoPrevPage : null }
-        />
-      </div>
-      
-    </>
+    <Router>
+      <Navbar />
+        <Switch>
+          <Route 
+            path="/" 
+            component={props => <AllPokemon { ... props} />} 
+          />
+          <Route 
+            path="/:pokemonIndex" 
+            children={({match}) => 
+            <PokemonDetails pokemonIndex={match}/>
+            } 
+          />
+        </Switch>
+      <Pagination />
+    </Router>
   );
-  }
+}
 
 export default App;
-
-// // can get api info for each pokemon through - href={pokemonUrl + p}
-//   // make a page to display pokemon information ( 
-//   // base happiness, 
-//   // capture rate, 
-//   // growth rate, 
-//   // evolution chain, 
-//   // moves, 
-//   // habitat, 
-//   // pokedex number (as per each different type of pokedex?), 
-//   // get random sayings from flavour text entries (depending on pokemon edition, for only english at the moment)
-//   // show pokemon if legendary or mythical (if not, show nothing) 
-//   // )
-
-//   // https://pokeapi.co/api/v2/pokemon-form/ will show pokemon details in more concise format
-
-//   // info: https://pokeapi.co/docs/v2#pokemon-section
