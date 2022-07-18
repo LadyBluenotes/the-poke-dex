@@ -1,0 +1,10 @@
+main {
+    display: inline-flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    background-color: white;
+    width: 95%;
+    margin: 2%;
+    border-radius: 15px;
+}
+

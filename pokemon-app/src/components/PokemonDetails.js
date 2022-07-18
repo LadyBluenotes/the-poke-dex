@@ -212,56 +212,54 @@ export default class PokemonDetails extends Component {
   render() {
     return (
       <main>
-        <div>
-          <img src={this.state.imageUrl} alt={this.state.name} />
-        </div>
-        <div>
-          <h2> #{this.state.pokemonIndex.toString().padStart(3, '0')}
-          {this.state.name
-            .toLowerCase()
-            .split(' ')
-            .map(s => s.charAt(0).toUpperCase() + s.substring(1))
-            .join(' ')}
-          </h2>
-          
-          <TableContainer component={Paper}>
-            <TableBody>
-              <TableRow>
-                <TableHead>Type</TableHead>
-                <TableCell>{this.state.types.map(type => {
-                  return (
-                    <span key={type} style={{ backgroundColor: `#${TYPE_COLORS[type]}` }}>
-                      {type
-                      .toLowerCase()
-                      .split(' ')
-                      .map(s => s.charAt(0).toUpperCase() + s.substring(1))
-                      .join(' ')}
-                    </span>
-                  )})}
-                </TableCell>
-              </TableRow>
-              <TableRow>
-                <TableHead>Height</TableHead>
-                <TableCell>{this.state.height}m</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableHead>Weight</TableHead>
-                <TableCell>{this.state.weight}kg</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableHead>Abilities</TableHead>
-                <TableCell>{this.state.abilities}
-                </TableCell>
-              </TableRow>
-            </TableBody>
-          </TableContainer>
 
-        </div>
+          <div className='pokeImg'>
+            <img src={this.state.imageUrl} alt={this.state.name} />
+          </div>
 
-        <section>
+          <div className='pokeData'>
+              <h2 className='pokeNameNumber'> #{this.state.pokemonIndex.toString().padStart(3, '0') + ' ' + this.state.name
+                .toLowerCase()
+                .split(' ')
+                .map(s => s.charAt(0).toUpperCase() + s.substring(1))
+                .join(' ')}
+              </h2>
+              <div classname='basicTable'>
+                <Table>
+                  <TableBody>
+                    <TableRow>
+                      <TableHead>Type</TableHead>
+                      <TableCell>{this.state.types.map(type => {
+                        return (
+                          <span key={type} style={{ backgroundColor: `#${TYPE_COLORS[type]}` }}>
+                            {type
+                            .toLowerCase()
+                            .split(' ')
+                            .map(s => s.charAt(0).toUpperCase() + s.substring(1))
+                            .join(' ')}
+                          </span>
+                        )})}
+                      </TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableHead>Height</TableHead>
+                      <TableCell>{this.state.height}m</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableHead>Weight</TableHead>
+                      <TableCell>{this.state.weight}kg</TableCell>
+                    </TableRow>
+                    <TableRow>
+                      <TableHead>Abilities</TableHead>
+                      <TableCell>{this.state.abilities}
+                      </TableCell>
+                    </TableRow>
+                  </TableBody>
+                </Table>
+              </div>
+          </div>
 
-          <div>
-
+          <div classname='pokeTraining'>
             <h3>Training</h3>
             <Table>
               <TableBody>
@@ -283,11 +281,9 @@ export default class PokemonDetails extends Component {
                 </TableRow>
               </TableBody>
             </Table>
+            </div>
 
-          </div>
-
-          <div>
-
+          <div className='pokeBreeding'>
             <h3>Breeding</h3>
             <Table>
               <TableBody>
@@ -308,13 +304,9 @@ export default class PokemonDetails extends Component {
                 </TableRow>
               </TableBody>
             </Table>
-
           </div>
 
-        </section>
-
-        <section >
-
+        <div className='pokeStats'>
           <h3>Base Stats</h3>
           <div>
             <p>
@@ -342,7 +334,7 @@ export default class PokemonDetails extends Component {
               <span>{this.state.stats.specialDefense}</span>
             </p>
           </div>
-        </section>
+        </div>
 </main>
     );
   }
