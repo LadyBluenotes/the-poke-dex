@@ -10,8 +10,7 @@ main {
 }
 
 .pokeImg {
-    width: 50%;
-    margin: 6% auto;
+    margin: 25% auto;
 }
 
 .pokeData {
@@ -25,7 +24,6 @@ main {
 
 .pokeTraining {
     width: 45%;
-    height: auto;
 }
 
 .pokeBreeding{

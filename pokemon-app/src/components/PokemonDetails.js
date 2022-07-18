@@ -107,8 +107,8 @@ export default class PokemonDetails extends Component {
       }
     });
 
-    const height = Math.round((pokemonRes.height * 0.328084 + 0.00001) * 100) / 100;
-    const weight = Math.round((pokemonRes.weight * 0.220462 + 0.00001) * 100) / 100;
+    const height = (pokemonRes.data.height/10).toFixed(2);
+    const weight = (pokemonRes.data.weight/10).toFixed(2); ;
     const baseExperience = pokemonRes.data.base_experience;
 
     const types = pokemonRes.data.types.map(type => type.type.name);
@@ -248,11 +248,11 @@ export default class PokemonDetails extends Component {
                     </TableRow>
                     <TableRow>
                       <TableHead>Height</TableHead>
-                      <TableCell>{this.state.height}m</TableCell>
+                      <TableCell>{`${this.state.height}m ( ${(this.state.height * 3.28).toFixed(2)}ft )`}</TableCell>
                     </TableRow>
                     <TableRow>
                       <TableHead>Weight</TableHead>
-                      <TableCell>{this.state.weight}kg</TableCell>
+                      <TableCell>{`${this.state.weight}kg ( ${((this.state.weight) * 2.20).toFixed(2)}lb )`}</TableCell>
                     </TableRow>
                     <TableRow>
                       <TableHead>Abilities</TableHead>
