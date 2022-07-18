@@ -3,16 +3,29 @@ import './Navbar.css'
 
 function Navbar({}) {
 
-  // searching for pokemon by name brings up the pokemon's information page, if no pokemon is found, it displays a message saying "No pokemon found"
+// user input pokemmon name into input field and when entered will return pokemon detail page of pokemon
+// if name is entered wrong, return alert message saying that pokemon does not exist
+// if name is not entered, return alert message saying that pokemon name is required
+
   const searchPokemon = (e) => {
     e.preventDefault()
-    const search = e.target.search.value
-    if (search === '') {
-      alert('Please enter a pokemon name')
+    const pokemonName = e.target.elements.pokemonName.value.toLowerCase()
+    if (pokemonName) {
+      window.location.href = `/pokemon/${pokemonName}`
     } else {
-      window.location.href = `/pokemon/${search}`
+      alert('Pokemon name is required')
     }
   }
+  
+  // const searchPokemon = (e) => {
+  //   e.preventDefault()
+  //   const search = e.target.search.value
+  //   if (search === '') {
+  //     alert('Please enter a pokemon name')
+  //   } else {
+  //     window.location.href = `/pokemon/${search}`
+  //   }
+  // }
 
   const goHome = () => {
     window.location.href = '/'
@@ -30,6 +43,10 @@ function Navbar({}) {
                 onChange={searchPokemon}
               />
             </label>
+            <button 
+              className='searchButton'
+              type="submit"
+            >Search</button>
           </form>
         </div>
       </nav>
