@@ -2,7 +2,15 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import './PokemonDetails.css';
-import { CircularProgress } from '@mui/material';
+import { 
+  Table, 
+  TableBody, 
+  TableCell, 
+  TableContainer,
+  TableHead,
+  TableRow,
+  Paper
+ } from '@mui/material';
 
 const TYPE_COLORS = {
   bug: 'B1C12E',
@@ -55,7 +63,10 @@ export default class PokemonDetails extends Component {
       genderRatioFemale: '',
       evs: '',
       hatchSteps: '',
-      themeColor: '#EF5350'
+      themeColor: '#EF5350',
+      baseHappiness: '',
+      growthRate: '',
+      baseExperience: ''
     }
   }
 
@@ -100,6 +111,7 @@ export default class PokemonDetails extends Component {
 
     const height = Math.round((pokemonRes.height * 0.328084 + 0.00001) * 100) / 100;
     const weight = Math.round((pokemonRes.weight * 0.220462 + 0.00001) * 100) / 100;
+    const baseExperience = pokemonRes.data.base_experience;
 
     const types = pokemonRes.data.types.map(type => type.type.name);
 
@@ -157,6 +169,9 @@ export default class PokemonDetails extends Component {
       .join(', ');
 
       const hatchSteps = 255 * (res.data['hatch_counter'] + 1)
+  
+    const baseHappiness = res.data.base_happiness;
+    const growthRate = res.data.growth_rate.name;
 
       this.setState({
         description,
@@ -184,7 +199,10 @@ export default class PokemonDetails extends Component {
         height,
         weight,
         abilities,
-        evs
+        evs,
+        baseExperience,
+        baseHappiness,
+        growthRate,
       });
 
     })
@@ -193,22 +211,24 @@ export default class PokemonDetails extends Component {
   
   render() {
     return (
-      <main className='containDetails'>
-        <div className='pokeImg'>
+      <main>
+        <div>
           <img src={this.state.imageUrl} alt={this.state.name} />
         </div>
-        <div className='pokeData'>
-          <h2>{this.state.name
+        <div>
+          <h2> #{this.state.pokemonIndex.toString().padStart(3, '0')}
+          {this.state.name
             .toLowerCase()
             .split(' ')
             .map(s => s.charAt(0).toUpperCase() + s.substring(1))
             .join(' ')}
           </h2>
-          <table>
-            <tbody>
-              <tr>
-                <th>Type</th>
-                <td>{this.state.types.map(type => {
+          
+          <TableContainer component={Paper}>
+            <TableBody>
+              <TableRow>
+                <TableHead>Type</TableHead>
+                <TableCell>{this.state.types.map(type => {
                   return (
                     <span key={type} style={{ backgroundColor: `#${TYPE_COLORS[type]}` }}>
                       {type
@@ -218,72 +238,83 @@ export default class PokemonDetails extends Component {
                       .join(' ')}
                     </span>
                   )})}
-                </td>
-              </tr>
-              <tr>
-                <th>Height</th>
-                <td>{this.state.height}m</td>
-              </tr>
-              <tr>
-                <th>Weight</th>
-                <td>{this.state.weight}kg</td>
-              </tr>
-              <tr>
-                <th>Abilities</th>
-                <td>{this.state.abilities}
-                </td>
-              </tr>
-            </tbody>
-          </table>
+                </TableCell>
+              </TableRow>
+              <TableRow>
+                <TableHead>Height</TableHead>
+                <TableCell>{this.state.height}m</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableHead>Weight</TableHead>
+                <TableCell>{this.state.weight}kg</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableHead>Abilities</TableHead>
+                <TableCell>{this.state.abilities}
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </TableContainer>
+
         </div>
+
         <section>
+
           <div>
+
             <h3>Training</h3>
-            <table>
-              <tbody>
-                <tr>
-                  <th>Catch Rate</th>
-                  <td>{this.state.catchRate}%</td>
-                </tr>
-                <tr>
-                  <th>Base Experience</th>
-                  <td>{this.state.baseExperience}</td>
-                </tr>
-                <tr>
-                  <th>Base Friendship</th>
-                  <td>{this.state.baseFriendship}</td>
-                </tr>
-                <tr>
-                  <th>Growth Rate</th>
-                  <td>{this.state.growthRate}</td>
-                </tr>
-              </tbody>
-            </table>
+            <Table>
+              <TableBody>
+                <TableRow>
+                  <TableHead>Catch Rate</TableHead>
+                  <TableCell>{this.state.catchRate}%</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableHead>Base Experience</TableHead>
+                  <TableCell>{this.state.baseExperience}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableHead>Base Happiness(Friendship)</TableHead>
+                  <TableCell>{this.state.baseHappiness}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableHead>Growth Rate</TableHead>
+                  <TableCell>{this.state.growthRate}</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+
           </div>
+
           <div>
+
             <h3>Breeding</h3>
-            <table>
-              <tbody>
-                <tr>
-                  <th>Egg Groups</th>
-                  <td>{this.state.eggGroups}</td>
-                </tr>
-                <tr>
-                  <th>Hatch Steps</th>
-                  <td>{this.state.hatchSteps}</td>
-                </tr>
-                <tr>
-                  <th>Gender</th>
-                  <td>
+            <Table>
+              <TableBody>
+                <TableRow>
+                  <TableHead>Egg Groups</TableHead>
+                  <TableCell>{this.state.eggGroups}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableHead>Hatch Steps</TableHead>
+                  <TableCell>{this.state.hatchSteps}</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableHead>Gender</TableHead>
+                  <TableCell>
                     <span>{this.state.genderRatioFemale}% Female</span>
                     <span>{this.state.genderRatioMale}% Male</span>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+                  </TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+
           </div>
+
         </section>
-        <section>
+
+        <section >
+
           <h3>Base Stats</h3>
           <div>
             <p>
