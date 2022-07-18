@@ -6,10 +6,8 @@ import {
   Table, 
   TableBody, 
   TableCell, 
-  TableContainer,
   TableHead,
   TableRow,
-  Paper
  } from '@mui/material';
 
 const TYPE_COLORS = {
@@ -213,6 +211,7 @@ export default class PokemonDetails extends Component {
     return (
       <main>
 
+
           <div className='pokeImg'>
             <img src={this.state.imageUrl} alt={this.state.name} />
           </div>
@@ -259,6 +258,7 @@ export default class PokemonDetails extends Component {
               </div>
           </div>
 
+        <div className='pokeInfo'>
           <div classname='pokeTraining'>
             <h3>Training</h3>
             <Table>
@@ -282,7 +282,8 @@ export default class PokemonDetails extends Component {
               </TableBody>
             </Table>
             </div>
-
+        </div>
+        
           <div className='pokeBreeding'>
             <h3>Breeding</h3>
             <Table>

@@ -1,6 +1,0 @@
-{
-  "dependencies": {
-    "axios": "^0.27.2",
-    "react-poke-sprites": "^0.0.8"
-  }
-}
