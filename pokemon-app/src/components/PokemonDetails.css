@@ -54,3 +54,7 @@ main {
     flex-direction: row;
     flex-wrap: wrap;
 }
+
+h3 {
+    margin-bottom: 0.5rem;
+}

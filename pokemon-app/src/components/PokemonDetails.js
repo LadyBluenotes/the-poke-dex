@@ -117,11 +117,12 @@ export default class PokemonDetails extends Component {
 
     const abilities = pokemonRes.data.abilities.map(
       ability => {
-        return ability.ability.name
+        return <li> {ability.ability.name
           .toLowerCase()
           .split('-')
           .map(s => s.charAt(0).toUpperCase() + s.substring(1))
-          .join(' ')
+          .join(' ')}
+        </li>
       });
 
       const evs = pokemonRes.data.stats
@@ -166,7 +167,7 @@ export default class PokemonDetails extends Component {
       })
       .join(', ');
 
-      const hatchSteps = 255 * (res.data['hatch_counter'] + 1)
+    const hatchSteps = 255 * (res.data['hatch_counter'] + 1)
   
     const baseHappiness = res.data.base_happiness;
     const growthRate = res.data.growth_rate.name;
