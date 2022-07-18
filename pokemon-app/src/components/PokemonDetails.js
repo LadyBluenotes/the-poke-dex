@@ -228,16 +228,21 @@ export default class PokemonDetails extends Component {
                   <TableBody>
                     <TableRow>
                       <TableHead>Type</TableHead>
-                      <TableCell>{this.state.types.map(type => {
+                      <TableCell>
+                      <div className='pokeType'>
+                        {this.state.types.map(type => {
                         return (
-                          <span key={type} style={{ backgroundColor: `#${TYPE_COLORS[type]}` }}>
-                            {type
-                            .toLowerCase()
-                            .split(' ')
-                            .map(s => s.charAt(0).toUpperCase() + s.substring(1))
-                            .join(' ')}
-                          </span>
+                          
+                            <span key={type} style={{ backgroundColor: `#${TYPE_COLORS[type]}` }}>
+                              {type
+                              .toLowerCase()
+                              .split(' ')
+                              .map(s => s.charAt(0).toUpperCase() + s.substring(1))
+                              .join(' ')}
+                            </span>
+                          
                         )})}
+                        </div>
                       </TableCell>
                     </TableRow>
                     <TableRow>

@@ -15,7 +15,6 @@ main {
 }
 
 .pokeData {
-    width: 45%;
     height: auto;
     margin: 6%;
 }
@@ -37,4 +36,21 @@ main {
 .pokeStats {
     height: 275px;
     padding-left: 5%;
+}
+
+.pokeType > span {
+    display: inline-flex;
+    justify-content: center;
+    border: 1px solid rgba(128, 128, 128, 0.644);
+    width: 80px;
+    border-radius: 15px;
+    color: white;
+    padding: 0.2rem;
+    margin: 0.2rem;
+}
+
+.pokeType {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
