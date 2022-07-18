@@ -318,31 +318,79 @@ export default class PokemonDetails extends Component {
           <div>
             <p>
               <span>HP</span>
-              <span>{this.state.stats.hp}</span>
+              <div class="progress-bar horizontal">
+                  <div class="progress-fill"
+                    style={{
+                      width : `${this.state.stats.hp}%`
+                    }}
+                  >
+                    <span>{this.state.stats.hp}</span>
+                  </div>
+              </div>
             </p>
             <p>
               <span>Attack</span>
-              <span>{this.state.stats.attack}</span>
+              <div class="progress-bar horizontal">
+                  <div class="progress-fill"
+                    style={{
+                      width : `${this.state.stats.attack}%`
+                    }}
+                  >
+                    <span>{this.state.stats.attack}</span>
+                  </div>
+              </div>
             </p>
             <p>
               <span>Defense</span>
-              <span>{this.state.stats.defense}</span>
+              <div class="progress-bar horizontal">
+                  <div class="progress-fill"
+                    style={{
+                      width : `${this.state.stats.defense}%`
+                    }}
+                  >
+                    <span>{this.state.stats.defense}</span>
+                  </div>
+              </div>
             </p>
             <p>
               <span>Speed</span>
-              <span>{this.state.stats.speed}</span>
+              <div class="progress-bar horizontal">
+                  <div class="progress-fill"
+                    style={{
+                      width : `${this.state.stats.speed}%`
+                    }}
+                  >
+                    <span>{this.state.stats.speed}</span>
+                  </div>
+              </div>
             </p>
             <p>
               <span>Special Attack</span>
-              <span>{this.state.stats.specialAttack}</span>
+              <div class="progress-bar horizontal">
+                  <div class="progress-fill-special"
+                    style={{
+                      width : `${this.state.stats.specialAttack}%`
+                    }}
+                  >
+                    <span>{this.state.stats.specialAttack}</span>
+                  </div>
+              </div>
             </p>
             <p>
               <span>Special Defense</span>
-              <span>{this.state.stats.specialDefense}</span>
+              <div class="progress-bar horizontal">
+                  <div class="progress-fill-special"
+                    style={{
+                      width: `${this.state.stats.specialDefense}%`
+                    }}
+                  >
+                    <span>{this.state.stats.specialDefense}</span>
+                  </div>
+              </div>
             </p>
           </div>
         </div>
-</main>
+      </main>
     );
   }
 }
