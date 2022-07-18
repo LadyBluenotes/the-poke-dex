@@ -193,32 +193,39 @@ export default class PokemonDetails extends Component {
   render() {
     return (
       <div className='containDetails'>
+
         <div className='identify'>
-          <h5 className='pokeIndex'>#{this.state.pokemonIndex}</h5>
-        </div>
-
-        <div classname='pokemonTypes'>
-          {this.state.types.map(type => (
-            <span key={type}>
-              {type
-                .toLowerCase()
-                .split(' ')
-                .map(s => s.charAt(0).toUpperCase() + s.substring(1))
-                .join(' ')}
-            </span>
-          ))}
-        </div>
-
-        <img src={this.state.imageUrl}/>
-
-
-        <h4>
-          {this.state.name
+          <h5 className='pokeIndex'>#{this.state.pokemonIndex.toString().padStart(3, '0')}
+          <span className='pokeName'>
+            {this.state.name
             .toLowerCase()
             .split(' ')
             .map(s => s.charAt(0).toUpperCase() + s.substring(1))
             .join(' ')}
-        </h4>
+          </span>
+        </h5>
+        <div className='types'>
+            {this.state.types.map(type => (
+              <span
+                key={type}
+                style={{
+                  backgroundColor: `#${TYPE_COLORS[type]}`,
+                  color: 'white'
+                }}
+              >
+                {type
+                  .toLowerCase()
+                  .split(' ')
+                  .map(s => s.charAt(0).toUpperCase() + s.substring(1))
+                  .join(' ')}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div classname='pokeImage'>
+          <img src={this.state.imageUrl}/>
+        </div>
 
         <div>
           HP
@@ -370,34 +377,6 @@ export default class PokemonDetails extends Component {
 
                     <h6>EVs:</h6>
                       <h6>{this.state.evs}</h6>
-
-        <div>
-          {this.state.types.map(type => (
-            <span
-              key={type}
-              style={{
-                backgroundColor: `#${TYPE_COLORS[type]}`,
-                color: 'white'
-              }}
-            >
-              {type
-                .toLowerCase()
-                .split(' ')
-                .map(s => s.charAt(0).toUpperCase() + s.substring(1))
-                .join(' ')}
-            </span>
-          ))}
-        </div>
-
-        <img src={this.state.imageUrl} />
-
-        <h4>
-          {this.state.name
-            .toLowerCase()
-            .split(' ')
-            .map(s => s.charAt(0).toUpperCase() + s.substring(1))
-            .join(' ')}
-        </h4>
 </div>
     );
   }
