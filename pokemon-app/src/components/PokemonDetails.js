@@ -216,7 +216,7 @@ export default class PokemonDetails extends Component {
           <div className='pokeImg'>
             <img src={this.state.imageUrl} alt={this.state.name} />
           </div>
-
+          
           <div className='pokeData'>
               <h2 className='pokeNameNumber'> #{this.state.pokemonIndex.toString().padStart(3, '0') + ' ' + this.state.name
                 .toLowerCase()
@@ -263,7 +263,7 @@ export default class PokemonDetails extends Component {
                 </Table>
               </div>
           </div>
-
+                               
         <div className='pokeInfo'>
           <div classname='pokeTraining'>
             <h3>Training</h3>
@@ -317,7 +317,7 @@ export default class PokemonDetails extends Component {
           <h3>Base Stats</h3>
           <div>
             <p>
-              <span>HP</span>
+              <span className='stateTitle'>HP</span>
               <div class="progress-bar horizontal">
                   <div class="progress-fill"
                     style={{
@@ -329,7 +329,7 @@ export default class PokemonDetails extends Component {
               </div>
             </p>
             <p>
-              <span>Attack</span>
+              <span className='stateTitle'>Attack</span>
               <div class="progress-bar horizontal">
                   <div class="progress-fill"
                     style={{
@@ -341,7 +341,7 @@ export default class PokemonDetails extends Component {
               </div>
             </p>
             <p>
-              <span>Defense</span>
+              <span className='stateTitle'>Defense</span>
               <div class="progress-bar horizontal">
                   <div class="progress-fill"
                     style={{
@@ -353,7 +353,7 @@ export default class PokemonDetails extends Component {
               </div>
             </p>
             <p>
-              <span>Speed</span>
+              <span className='stateTitle'>Speed</span>
               <div class="progress-bar horizontal">
                   <div class="progress-fill"
                     style={{
@@ -365,7 +365,7 @@ export default class PokemonDetails extends Component {
               </div>
             </p>
             <p>
-              <span>Special Attack</span>
+              <span className='stateTitle'>Special Attack</span>
               <div class="progress-bar horizontal">
                   <div class="progress-fill-special"
                     style={{
@@ -377,7 +377,7 @@ export default class PokemonDetails extends Component {
               </div>
             </p>
             <p>
-              <span>Special Defense</span>
+              <span className='stateTitle'>Special Defense</span>
               <div class="progress-bar horizontal">
                   <div class="progress-fill-special"
                     style={{

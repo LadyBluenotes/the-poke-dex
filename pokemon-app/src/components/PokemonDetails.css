@@ -11,28 +11,32 @@ main {
 
 .pokeImg {
     margin: 25% auto;
+    height: 150px;
 }
 
 .pokeData {
-    height: auto;
     margin: 6%;
+    height: 150px;
 }
 
 .pokeInfo {
     padding-left: 5%;
+    height: 200px;
 }
 
 .pokeTraining {
     width: 45%;
+    height: 200px;
 }
 
 .pokeBreeding{
     padding-left: 5%;
     padding-right: 5%;
+    height: 200px;
 }
 
 .pokeStats {
-    height: 285px;
+    height: 315px;
     padding-left: 5%;
 }
 
@@ -101,4 +105,9 @@ h3 {
   .rounded .progress-fill {
     border-radius: 3px;
     box-shadow: inset 0 0 5px rgba(0,0,0,.2);
+  }
+
+  .stateTitle {
+    font-weight: 600;
+    margin-bottom: 5px;
   }

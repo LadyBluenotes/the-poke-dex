@@ -31,12 +31,21 @@ componentDidMount() {
     this.setState({ name: this.capitalize(name), imageUrl, pokemonIndex });
   }
 
+// reload page when link is clicked
+
+
+
+
     render() {
         return (
             <div className='wrapper'>
                 <div className='pokeNameBox'>
                     <span className='pokemonIdentifier'>
-                        <Link to={`pokemon/${this.state.pokemonIndex}`}>
+                        <Link to={`pokemon/${this.state.pokemonIndex}`}
+                            onClick={() => {
+                                window.location.reload();
+                            }}
+                        >
                             <h4 className='pokemonIndex'>#{this.state.pokemonIndex.toString().padStart(3, '0')}</h4>
                             <h4 className='pokemonName'>{this.state.name}</h4>
                         </Link>
