@@ -58,3 +58,9 @@ main {
 h3 {
     margin-bottom: 0.5rem;
 }
+
+.MuiTableHead-root {
+    display: block !important;
+    font-weight: 600;
+    margin-top: 20px;
+}
