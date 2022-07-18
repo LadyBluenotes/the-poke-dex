@@ -30,12 +30,7 @@ componentDidMount() {
 
     this.setState({ name: this.capitalize(name), imageUrl, pokemonIndex });
   }
-
-// reload page when link is clicked
-
-
-
-
+  
     render() {
         return (
             <div className='wrapper'>

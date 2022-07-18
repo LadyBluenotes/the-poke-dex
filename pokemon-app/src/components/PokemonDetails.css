@@ -93,7 +93,6 @@ h3 {
     border-radius: 20px;
     padding-left: 5px;
     height: 20px;
-    width: 50%;
     color: #fff;
     text-align: center;
     font-family: "Lato","Verdana",sans-serif;
@@ -111,3 +110,32 @@ h3 {
     font-weight: 600;
     margin-bottom: 5px;
   }
+
+@media (min-width: 310px) and (max-width: 580px) {
+
+    main {
+        grid-template-columns: 1fr;
+        grid-gap: 1rem;
+        background-color: white;
+        width: 95%;
+        margin: 2%;
+        border-radius: 15px;
+    }
+
+    .pokeInfo {
+        height: 200px;
+    }
+
+    .pokeBreeding {
+        margin-top: 10%;
+    }
+
+}
+
+@media (min-width: 581px) and (max-width: 850px) {
+
+}
+
+@media (min-width: 851px) and (max-width: 1200px) {
+
+}
