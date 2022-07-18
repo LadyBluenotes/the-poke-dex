@@ -25,7 +25,7 @@ export default class PokemonCard extends Component {
 
 componentDidMount() {
     const { name, url } = this.props;
-    const pokemonIndex = url.split('/')[6].toString().padStart(3, '0');
+    const pokemonIndex = url.split('/')[6];
     const imageUrl = `https://img.pokemondb.net/artwork/large/${name}.jpg`;
 
     this.setState({ name: this.capitalize(name), imageUrl, pokemonIndex });
@@ -36,8 +36,8 @@ componentDidMount() {
             <div className='wrapper'>
                 <div className='pokeNameBox'>
                     <span className='pokemonIdentifier'>
-                        <Link to={`/pokemon/${this.state.pokemonIndex}`}>
-                            <h4 className='pokemonIndex'>#{this.state.pokemonIndex}</h4>
+                        <Link to={`pokemon/${this.state.pokemonIndex}`}>
+                            <h4 className='pokemonIndex'>#{this.state.pokemonIndex.toString().padStart(3, '0')}</h4>
                             <h4 className='pokemonName'>{this.state.name}</h4>
                         </Link>
                     </span>

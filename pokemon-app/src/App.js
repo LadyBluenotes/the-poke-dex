@@ -8,7 +8,6 @@ import './App.css';
 
 import Navbar from './components/Navbar';
 import AllPokemon from './components/AllPokemon';
-
 import PokemonDetails from './components/PokemonDetails'
 
 function App() {
@@ -18,15 +17,13 @@ function App() {
       <Navbar />
         <Switch>
             <Route 
-              path="/" 
+              exact path="/" 
               component={props => <AllPokemon { ... props} />} 
             />
             <Route 
-            path="/:pokemonIndex" 
-            children={({match}) => 
-            <PokemonDetails pokemonIndex={match}/>
-            } 
-          />
+            exact path="/pokemon/:pokemonIndex"
+            component={props => <PokemonDetails { ... props} />}
+            />
         </Switch>
     </Router>
   );

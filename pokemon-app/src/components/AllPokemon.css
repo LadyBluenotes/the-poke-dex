@@ -71,6 +71,10 @@ span {
     display: flex;
 }
 
+span:hover {
+    box-shadow: 3px 3px 12px 1px rgba(0,0,0,0.54);
+}
+
 .pokemonIndex {
     font-weight: 400;
 }

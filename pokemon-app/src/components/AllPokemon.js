@@ -7,7 +7,7 @@ import axios from 'axios';
 import { Grid } from '@mui/material';
 
 
-export default class PokemonList extends Component {
+export default class AllPokemon extends Component {
 
   state = {
     url: 'https://pokeapi.co/api/v2/pokemon/',

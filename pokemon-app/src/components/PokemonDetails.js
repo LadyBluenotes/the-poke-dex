@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import './PokemonDetails.css';
+
 const TYPE_COLORS = {
   bug: 'B1C12E',
   dark: '4F3A2D',
@@ -22,7 +24,7 @@ const TYPE_COLORS = {
   water: '3295F6'
 };
 
-export default class PokemonStats extends Component {
+export default class PokemonDetails extends Component {
 
   constructor(props) {
     super(props);
@@ -56,8 +58,9 @@ export default class PokemonStats extends Component {
     }
   }
 
-  async componentDidMount() {
-    const {pokemonIndex} = this.props.match.params;
+ async componentDidMount() {
+    const { pokemonIndex } = this.props.match.params;
+
     const pokemonUrl = `https://pokeapi.co/api/v2/pokemon/${pokemonIndex}`;
     const pokemonSpeciesUrl = `https://pokeapi.co/api/v2/pokemon-species/${pokemonIndex}/`;
 
@@ -189,12 +192,14 @@ export default class PokemonStats extends Component {
   
   render() {
     return (
-      <div>
-        <h5>{this.state.pokemonIndex}</h5>
+      <div className='containDetails'>
+        <div className='identify'>
+          <h5 className='pokeIndex'>#{this.state.pokemonIndex}</h5>
+        </div>
 
-        <div>
+        <div classname='pokemonTypes'>
           {this.state.types.map(type => (
-            <span key={type} >
+            <span key={type}>
               {type
                 .toLowerCase()
                 .split(' ')
@@ -393,169 +398,6 @@ export default class PokemonStats extends Component {
             .map(s => s.charAt(0).toUpperCase() + s.substring(1))
             .join(' ')}
         </h4>
-
-        <div>
-          <div>
-            HP
-          </div>
-              <div
-                role="progressbar"
-                style={{
-                  width: `${this.state.stats.hp}%`,
-                  backgroundColor: `#${this.state.themeColor}`
-                }}
-                aria-valuenow="25"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-                <small>{this.state.stats.hp}</small>
-            </div>
-        </div>
-
-        <div>
-          <div>
-            Attack
-          </div>
-              <div
-                role="progressbar"
-                style={{
-                  width: `${this.state.stats.attack}%`,
-                  backgroundColor: `#${this.state.themeColor}`
-                }}
-                aria-valuenow="25"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-                <small>{this.state.stats.attack}</small>
-          </div>
-        </div>
-
-        <div>
-          <div>
-            Defense
-          </div>
-              <div
-                className="progress-bar "
-                role="progressbar"
-                style={{
-                  width: `${this.state.stats.defense}%`,
-                  backgroundColor: `#${this.state.themeColor}`
-                }}
-                aria-valuenow="25"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-                <small>{this.state.stats.defense}</small>
-            </div>
-        </div>
-
-        <div>
-          <div>
-            Speed
-          </div>
-              <div
-                role="progressbar"
-                style={{
-                  width: `${this.state.stats.speed}%`,
-                  backgroundColor: `#${this.state.themeColor}`
-                }}
-                aria-valuenow="25"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-                <small>{this.state.stats.speed}</small>
-              </div>
-        </div>
-
-        <div>
-          <div>
-            Sp Atk
-          </div>
-              <div
-                role="progressbar"
-                style={{
-                  width: `${this.state.stats.specialAttack}%`,
-                  backgroundColor: `#${this.state.themeColor}`
-                }}
-                aria-valuenow={this.state.stats.specialAttack}
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-                <small>{this.state.stats.specialAttack}</small>
-          </div>
-        </div>
-
-        <div>
-          <div>
-            Sp Def
-          </div>
-              <div
-                role="progressbar"
-                style={{
-                  width: `${this.state.stats.specialDefense}%`,
-                  backgroundColor: `#${this.state.themeColor}`
-                }}
-                aria-valuenow={this.state.stats.specialDefense}
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-                <small>{this.state.stats.specialDefense}</small>
-              </div>
-            </div>
-
-        <p>{this.state.description}</p>
-
-
-    <h5>Profile</h5>
-
-      <h6>Height:</h6>
-      <h6>{this.state.height} ft.</h6>
-
-      <h6>Weight:</h6>
-      <h6>{this.state.weight} lbs</h6>
-      
-      <h6 >Catch Rate:</h6>
-      <h6>{this.state.catchRate}%</h6>
-          
-      <h6>Gender Ratio:</h6>
-        <div
-          class="progress-bar"
-          role="progressbar"
-          style={{
-            width: `${this.state.genderRatioFemale}%`,
-            backgroundColor: '#c2185b'
-          }}
-          aria-valuenow="15"
-          aria-valuemin="0"
-          aria-valuemax="100"
-        >
-          <small>{this.state.genderRatioFemale}</small>
-        </div>
-
-        <div
-          class="progress-bar"
-          role="progressbar"
-          style={{
-            width: `${this.state.genderRatioMale}%`,
-            backgroundColor: '#1976d2'
-          }}
-          aria-valuenow="30"
-          aria-valuemin="0"
-          aria-valuemax="100"
-        >
-          <small>{this.state.genderRatioMale}</small>
-        </div>
-
-
-      <h6>Egg Groups:</h6>
-      <h6>{this.state.eggGroups} </h6>
-
-      <h6>Hatch Steps:</h6>
-      <h6>{this.state.hatchSteps}</h6>
-
-      <h6>Abilities:</h6>
-      <h6>{this.state.abilities}</h6>
-
 </div>
     );
   }
