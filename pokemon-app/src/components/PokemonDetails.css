@@ -1,9 +1,7 @@
 .containDetails {
-    width: 96%;
-    height: 100%;
-    background-color: #f5f5f5;
-    margin: 2% auto;
-    border: 1px solid rgba(26, 25, 25, 0.548);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
 }
 
 .identify {
@@ -36,8 +34,19 @@ span {
     font-weight: 800;
 }
 
+section {
+    display: flex;
+}
+
+section > img {
+    padding: 1rem;
+    margin: 1rem;
+}
+
+
 .types {
     display: flex;
+    flex-direction: row;
     justify-content: right;
     align-items: center;
     height: 50px;

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 import './PokemonDetails.css';
+import { CircularProgress } from '@mui/material';
 
 const TYPE_COLORS = {
   bug: 'B1C12E',
@@ -67,7 +68,7 @@ export default class PokemonDetails extends Component {
     const pokemonRes = await axios.get(pokemonUrl)
 
     const name = pokemonRes.data.name
-    const imageUrl = `https://img.pokemondb.net/artwork/large/${name}.jpg`;
+    const imageUrl = pokemonRes.data.sprites.front_default;
 
 
     let { hp, attack, defense, speed, specialAttack, specialDefense } = '';
@@ -192,192 +193,126 @@ export default class PokemonDetails extends Component {
   
   render() {
     return (
-      <div className='containDetails'>
-
-        <div className='identify'>
-          <h5 className='pokeIndex'>#{this.state.pokemonIndex.toString().padStart(3, '0')}
-          <span className='pokeName'>
-            {this.state.name
+      <main className='containDetails'>
+        <div className='pokeImg'>
+          <img src={this.state.imageUrl} alt={this.state.name} />
+        </div>
+        <div className='pokeData'>
+          <h2>{this.state.name
             .toLowerCase()
             .split(' ')
             .map(s => s.charAt(0).toUpperCase() + s.substring(1))
             .join(' ')}
-          </span>
-        </h5>
-        <div className='types'>
-            {this.state.types.map(type => (
-              <span
-                key={type}
-                style={{
-                  backgroundColor: `#${TYPE_COLORS[type]}`,
-                  color: 'white'
-                }}
-              >
-                {type
-                  .toLowerCase()
-                  .split(' ')
-                  .map(s => s.charAt(0).toUpperCase() + s.substring(1))
-                  .join(' ')}
-              </span>
-            ))}
-          </div>
+          </h2>
+          <table>
+            <tbody>
+              <tr>
+                <th>Type</th>
+                <td>{this.state.types.map(type => {
+                  return (
+                    <span key={type} style={{ backgroundColor: `#${TYPE_COLORS[type]}` }}>
+                      {type
+                      .toLowerCase()
+                      .split(' ')
+                      .map(s => s.charAt(0).toUpperCase() + s.substring(1))
+                      .join(' ')}
+                    </span>
+                  )})}
+                </td>
+              </tr>
+              <tr>
+                <th>Height</th>
+                <td>{this.state.height}m</td>
+              </tr>
+              <tr>
+                <th>Weight</th>
+                <td>{this.state.weight}kg</td>
+              </tr>
+              <tr>
+                <th>Abilities</th>
+                <td>{this.state.abilities}
+                </td>
+              </tr>
+            </tbody>
+          </table>
         </div>
-
-        <div classname='pokeImage'>
-          <img src={this.state.imageUrl}/>
-        </div>
-
-        <div>
-          HP
-        </div>
-          <div
-              className="progress-bar"
-              role="progressbar"
-              style={{
-                width: `${this.state.stats.hp}%`,
-                backgroundColor: `#${this.state.themeColor}`
-              }}
-              aria-valuenow="25"
-              aria-valuemin="0"
-              aria-valuemax="100"
-            >
-              <small>{this.state.stats.hp}</small>
-          </div>
-
+        <section>
           <div>
-            Attack
+            <h3>Training</h3>
+            <table>
+              <tbody>
+                <tr>
+                  <th>Catch Rate</th>
+                  <td>{this.state.catchRate}%</td>
+                </tr>
+                <tr>
+                  <th>Base Experience</th>
+                  <td>{this.state.baseExperience}</td>
+                </tr>
+                <tr>
+                  <th>Base Friendship</th>
+                  <td>{this.state.baseFriendship}</td>
+                </tr>
+                <tr>
+                  <th>Growth Rate</th>
+                  <td>{this.state.growthRate}</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-            <div
-              className="progress-bar"
-              role="progressbar"
-              style={{
-                width: `${this.state.stats.attack}%`,
-                backgroundColor: `#${this.state.themeColor}`
-              }}
-              aria-valuenow="25"
-              aria-valuemin="0"
-              aria-valuemax="100"
-            >
-              <small>{this.state.stats.attack}</small>
-            </div>
-
-            <div>
-              Defense
-            </div>
-              <div
-                className="progress-bar "
-                role="progressbar"
-                style={{
-                  width: `${this.state.stats.defense}%`,
-                  backgroundColor: `#${this.state.themeColor}`
-                }}
-                aria-valuenow="25"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-                <small>{this.state.stats.defense}</small>
-          </div>
-
           <div>
-            Speed
+            <h3>Breeding</h3>
+            <table>
+              <tbody>
+                <tr>
+                  <th>Egg Groups</th>
+                  <td>{this.state.eggGroups}</td>
+                </tr>
+                <tr>
+                  <th>Hatch Steps</th>
+                  <td>{this.state.hatchSteps}</td>
+                </tr>
+                <tr>
+                  <th>Gender</th>
+                  <td>
+                    <span>{this.state.genderRatioFemale}% Female</span>
+                    <span>{this.state.genderRatioMale}% Male</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
-              <div
-                className="progress-bar"
-                role="progressbar"
-                style={{
-                  width: `${this.state.stats.speed}%`,
-                  backgroundColor: `#${this.state.themeColor}`
-                }}
-                aria-valuenow="25"
-                aria-valuemin="0"
-                aria-valuemax="100"
-              >
-                <small>{this.state.stats.speed}</small>
-              </div>
-
-              <div>
-                Sp Atk
-              </div>
-                  <div
-                    className="progress-bar "
-                    role="progressbar"
-                    style={{
-                      width: `${this.state.stats.specialAttack}%`,
-                      backgroundColor: `#${this.state.themeColor}`
-                    }}
-                    aria-valuenow={this.state.stats.specialAttack}
-                    aria-valuemin="0"
-                    aria-valuemax="100"
-                  >
-                    <small>{this.state.stats.specialAttack}</small>
-              </div>
-
-              <div>
-                Sp Def
-              </div>
-                <div
-                  className="progress-bar "
-                  role="progressbar"
-                  style={{
-                    width: `${this.state.stats.specialDefense}%`,
-                    backgroundColor: `#${this.state.themeColor}`
-                  }}
-                  aria-valuenow={this.state.stats.specialDefense}
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                >
-                  <small>{this.state.stats.specialDefense}</small>
-                </div>
-
-                <p>{this.state.description}</p>
-
-              <h5>Profile</h5>
-
-                    <h6>Height:</h6>
-                      <h6>{this.state.height} ft.</h6>
-
-                    <h6>Weight:</h6>
-                    <h6>{this.state.weight} lbs</h6>
-
-                    <h6>Catch Rate:</h6>
-                      <h6>{this.state.catchRate}%</h6>
-
-                    <h6>Gender Ratio:</h6>
-                      <div
-                        role="progressbar"
-                        style={{
-                          width: `${this.state.genderRatioFemale}%`,
-                          backgroundColor: '#c2185b'
-                        }}
-                        aria-valuenow="15"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      >
-                        <small>{this.state.genderRatioFemale}</small>
-                      </div>
-
-                      <div
-                        role="progressbar"
-                        style={{
-                          width: `${this.state.genderRatioMale}%`,
-                          backgroundColor: '#1976d2'
-                        }}
-                        aria-valuenow="30"
-                        aria-valuemin="0"
-                        aria-valuemax="100"
-                      >
-                        <small>{this.state.genderRatioMale}</small>
-                      </div>
-
-                    <h6>Hatch Steps:</h6>
-                      <h6>{this.state.hatchSteps}</h6>
-
-                    <h6>Abilities:</h6>
-                      <h6>{this.state.abilities}</h6>
-
-                    <h6>EVs:</h6>
-                      <h6>{this.state.evs}</h6>
-</div>
+        </section>
+        <section>
+          <h3>Base Stats</h3>
+          <div>
+            <p>
+              <span>HP</span>
+              <span>{this.state.stats.hp}</span>
+            </p>
+            <p>
+              <span>Attack</span>
+              <span>{this.state.stats.attack}</span>
+            </p>
+            <p>
+              <span>Defense</span>
+              <span>{this.state.stats.defense}</span>
+            </p>
+            <p>
+              <span>Speed</span>
+              <span>{this.state.stats.speed}</span>
+            </p>
+            <p>
+              <span>Special Attack</span>
+              <span>{this.state.stats.specialAttack}</span>
+            </p>
+            <p>
+              <span>Special Defense</span>
+              <span>{this.state.stats.specialDefense}</span>
+            </p>
+          </div>
+        </section>
+</main>
     );
   }
 }
