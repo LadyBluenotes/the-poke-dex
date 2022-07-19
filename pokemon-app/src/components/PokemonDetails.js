@@ -117,7 +117,7 @@ export default class PokemonDetails extends Component {
 
     const abilities = pokemonRes.data.abilities.map(
       ability => {
-        return <li> {ability.ability.name
+        return <li key={ability.ability.name}> {ability.ability.name
           .toLowerCase()
           .split('-')
           .map(s => s.charAt(0).toUpperCase() + s.substring(1))
@@ -125,21 +125,21 @@ export default class PokemonDetails extends Component {
         </li>
       });
 
-      const evs = pokemonRes.data.stats
-      .filter(stat => {
-        if (stat.effort > 0) {
-          return true;
-        }
-        return false;
-      })
-      .map(stat => {
-        return `${stat.effort} ${stat.stat.name
-          .toLowerCase()
-          .split('-')
-          .map(s => s.charAt(0).toUpperCase() + s.substring(1))
-          .join(' ')}`;
-      })
-      .join(', ');
+    const evs = pokemonRes.data.stats
+    .filter(stat => {
+      if (stat.effort > 0) {
+        return true;
+      }
+      return false;
+    })
+    .map(stat => {
+      return `${stat.effort} ${stat.stat.name
+        .toLowerCase()
+        .split('-')
+        .map(s => s.charAt(0).toUpperCase() + s.substring(1))
+        .join(' ')}`;
+    })
+    .join(', ');
 
     await axios.get(pokemonSpeciesUrl)
       .then(res => {
@@ -326,8 +326,8 @@ export default class PokemonDetails extends Component {
           <div>
             <p>
               <span className='stateTitle'>HP</span>
-              <div class="progress-bar horizontal">
-                  <div class="progress-fill"
+              <div className="progress-bar horizontal">
+                  <div className="progress-fill"
                     style={{
                       width : `${this.state.stats.hp}%`,
                     }}
@@ -338,8 +338,8 @@ export default class PokemonDetails extends Component {
             </p>
             <p>
               <span className='stateTitle'>Attack</span>
-              <div class="progress-bar horizontal">
-                  <div class="progress-fill"
+              <div className="progress-bar horizontal">
+                  <div className="progress-fill"
                     style={{
                       width : `${this.state.stats.attack}%`
                     }}
@@ -350,8 +350,8 @@ export default class PokemonDetails extends Component {
             </p>
             <p>
               <span className='stateTitle'>Defense</span>
-              <div class="progress-bar horizontal">
-                  <div class="progress-fill"
+              <div className="progress-bar horizontal">
+                  <div className="progress-fill"
                     style={{
                       width : `${this.state.stats.defense}%`
                     }}
@@ -362,8 +362,8 @@ export default class PokemonDetails extends Component {
             </p>
             <p>
               <span className='stateTitle'>Speed</span>
-              <div class="progress-bar horizontal">
-                  <div class="progress-fill"
+              <div className="progress-bar horizontal">
+                  <div className="progress-fill"
                     style={{
                       width : `${this.state.stats.speed}%`
                     }}
@@ -374,8 +374,8 @@ export default class PokemonDetails extends Component {
             </p>
             <p>
               <span className='stateTitle'>Special Attack</span>
-              <div class="progress-bar horizontal">
-                  <div class="progress-fill-special"
+              <div className="progress-bar horizontal">
+                  <div className="progress-fill-special"
                     style={{
                       width : `${this.state.stats.specialAttack}%`
                     }}
@@ -386,8 +386,8 @@ export default class PokemonDetails extends Component {
             </p>
             <p>
               <span className='stateTitle'>Special Defense</span>
-              <div class="progress-bar horizontal">
-                  <div class="progress-fill-special"
+              <div className="progress-bar horizontal">
+                  <div className="progress-fill-special"
                     style={{
                       width: `${this.state.stats.specialDefense}%`
                     }}
