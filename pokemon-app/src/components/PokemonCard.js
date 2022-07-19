@@ -7,16 +7,12 @@ export default class PokemonCard extends Component {
 
     constructor(props) {
         super(props);
-        console.log(this.props);
-
         this.state = {
             name: '',
             imageUrl: '',
             pokemonIndex: '',
         }
-        
         this.capitalize = this.capitalize.bind(this);
-
     }
     
   capitalize(string) {

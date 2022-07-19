@@ -152,6 +152,8 @@ export default class PokemonDetails extends Component {
       })
 
     const femaleRate = res.data['gender_rate'];
+
+    
     const genderRatioFemale = 12.5 * femaleRate;
     const genderRatioMale = 12.5 * (8 - femaleRate)
 
@@ -305,8 +307,14 @@ export default class PokemonDetails extends Component {
                 <TableRow>
                   <TableHead>Gender</TableHead>
                   <TableCell>
-                    <span>{this.state.genderRatioFemale}% Female</span>
-                    <span>{this.state.genderRatioMale}% Male</span>
+                  {(this.state.genderRatioFemale === (-12.5)) ? (
+                      <span>No information</span>
+                    ) : (
+                      <div>
+                        <span>{this.state.genderRatioFemale}% Female</span>
+                        <span>{this.state.genderRatioMale}% Male</span>
+                      </div>
+                    )}
                   </TableCell>
                 </TableRow>
               </TableBody>

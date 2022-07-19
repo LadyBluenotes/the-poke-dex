@@ -1,46 +1,25 @@
-import React from 'react'
-import './Navbar.css'
+import React, { Component } from 'react';
+import axios from 'axios';
+import './Navbar.css';
 
-function Navbar({}) {
+export default class Navbar extends Component {
 
-// user input pokemmon name into input field and when entered will return pokemon detail page of pokemon
-// if name is entered wrong, return alert message saying that pokemon does not exist
-// if name is not entered, return alert message saying that pokemon name is required
+// on entry of a pokemon, call api to get the data to get information for pokemon details page
 
-  const searchPokemon = (e) => {
-    e.preventDefault()
-    const pokemonName = e.target.elements.pokemonName.value.toLowerCase()
-    if (pokemonName) {
-      window.location.href = `/pokemon/${pokemonName}`
-    } else {
-      alert('Pokemon name is required')
-    }
-  }
-  
-  // const searchPokemon = (e) => {
-  //   e.preventDefault()
-  //   const search = e.target.search.value
-  //   if (search === '') {
-  //     alert('Please enter a pokemon name')
-  //   } else {
-  //     window.location.href = `/pokemon/${search}`
-  //   }
-  // }
 
-  const goHome = () => {
-    window.location.href = '/'
-  }
+    
+// on click of H1 return to home page
 
+render () {
   return (
     <nav className='navigation'>
-      <h1 className='title' onClick={goHome}>PokeDex</h1>
+      <h1 className='title'>PokeDex</h1>
         <div className='navSearch'>
           <form>
             <label>
               <input
                 type="text"
                 placeholder="Search for a Pokemon"
-                onChange={searchPokemon}
               />
             </label>
             <button 
@@ -50,7 +29,6 @@ function Navbar({}) {
           </form>
         </div>
       </nav>
-  )
+    )
+  }
 }
-
-export default Navbar
