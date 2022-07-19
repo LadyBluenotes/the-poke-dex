@@ -19,7 +19,7 @@ render () {
             <label>
               <input
                 type="text"
-                placeholder="Search for a Pokemon"
+                placeholder="Search"
               />
             </label>
             <button 

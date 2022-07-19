@@ -46,3 +46,16 @@ input {
     color: #2a2a28;
     vertical-align: middle;
 }
+
+@media (min-width: 310px) and (max-width: 580px) {
+
+    .searchButton {
+        
+    }
+
+    input {
+        width: 100px;
+        margin-top: 10%;
+    }
+
+}
