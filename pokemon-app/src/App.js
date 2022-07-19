@@ -9,6 +9,7 @@ import './App.css';
 import Navbar from './components/Navbar';
 import AllPokemon from './components/AllPokemon';
 import PokemonDetails from './components/PokemonDetails'
+import Undefined from './components/Undefined'
 
 function App() {
 

@@ -31,11 +31,9 @@ componentDidMount() {
         return (
             <div className='wrapper'>
                 <div className='pokeNameBox'>
-                    <span className='pokemonIdentifier'>
+                    <span className='pokemonIdentifier'
+                        onClick={() => window.location.reload()}>
                         <Link to={`pokemon/${this.state.pokemonIndex}`}
-                            onClick={() => {
-                                window.location.reload();
-                            }}
                         >
                             <h4 className='pokemonIndex'>#{this.state.pokemonIndex.toString().padStart(3, '0')}</h4>
                             <h4 className='pokemonName'>{this.state.name}</h4>

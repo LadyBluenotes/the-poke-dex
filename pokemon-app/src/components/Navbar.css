@@ -17,6 +17,7 @@
     margin-left: 15px;
     font-size: 1.5rem;
     font-weight: bold;
+    cursor: pointer;
 }
 
 .navSearch {

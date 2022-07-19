@@ -213,8 +213,7 @@ export default class PokemonDetails extends Component {
   render() {
     return (
       <main>
-
-
+        
           <div className='pokeImg'>
             <img src={this.state.imageUrl} alt={this.state.name} />
           </div>
@@ -292,34 +291,34 @@ export default class PokemonDetails extends Component {
             </div>
         </div>
         
-          <div className='pokeBreeding'>
-            <h3>Breeding</h3>
-            <Table>
-              <TableBody>
-                <TableRow>
-                  <TableHead>Egg Groups</TableHead>
-                  <TableCell>{this.state.eggGroups}</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableHead>Hatch Steps</TableHead>
-                  <TableCell>{this.state.hatchSteps}</TableCell>
-                </TableRow>
-                <TableRow>
-                  <TableHead>Gender</TableHead>
-                  <TableCell>
-                  {(this.state.genderRatioFemale === (-12.5)) ? (
-                      <span>No information</span>
-                    ) : (
-                      <div>
-                        <span>{this.state.genderRatioFemale}% Female</span>
-                        <span>{this.state.genderRatioMale}% Male</span>
-                      </div>
-                    )}
-                  </TableCell>
-                </TableRow>
-              </TableBody>
-            </Table>
-          </div>
+        <div className='pokeBreeding'>
+          <h3>Breeding</h3>
+          <Table>
+            <TableBody>
+              <TableRow>
+                <TableHead>Egg Groups</TableHead>
+                <TableCell>{this.state.eggGroups}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableHead>Hatch Steps</TableHead>
+                <TableCell>{this.state.hatchSteps}</TableCell>
+              </TableRow>
+              <TableRow>
+                <TableHead>Gender</TableHead>
+                <TableCell>
+                {(this.state.genderRatioFemale === (-12.5)) ? (
+                    <span>No information</span>
+                  ) : (
+                    <div>
+                      <span>{this.state.genderRatioFemale}% Female</span>
+                      <span>{this.state.genderRatioMale}% Male</span>
+                    </div>
+                  )}
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </div>
 
         <div className='pokeStats'>
           <h3>Base Stats</h3>

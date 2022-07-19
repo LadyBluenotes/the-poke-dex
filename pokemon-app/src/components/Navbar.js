@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import axios from 'axios';
 import './Navbar.css';
 
@@ -13,13 +13,18 @@ export default class Navbar extends Component {
   
   this.handleChange = (e) => {
     this.setState({ name: e.target.value });
+    console.log(e.target.value);
   }
 
   this.handleSubmit = (e) => {
     e.preventDefault();
     axios.get(`https://pokeapi.co/api/v2/pokemon/${this.state.name}`)
     .then(res => {
-      window.location.href = `/pokemon/${res.data.id}`;
+      console.log(res.data.id);
+      this.setState({
+        name: res.data.name,
+        index: res.data.id,
+      })
     }).catch(err => {
       console.log(err);
     }).finally(() => {
@@ -30,6 +35,14 @@ export default class Navbar extends Component {
     }
     )
   }
+
+  // redirect to pokemon details page using the index
+
+  this.handleClick = (e) => {
+    e.preventDefault();
+    this.props.push(`/pokemon/${this.state.index}`);
+  }
+
 }
     
 // on click of H1 return to home page
@@ -39,13 +52,13 @@ render () {
     <nav className='navigation'>
       <h1 className='title'>PokeDex</h1>
         <div className='navSearch'>
-          <form 
-            onChange={this.handleChange}
-          >
+          <form>
             <label>
               <input
                 type="text"
                 placeholder="Search"
+                value={this.state.name}
+                onChange={this.handleChange}
               />
             </label>
             <button
