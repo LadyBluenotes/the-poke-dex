@@ -1,5 +1,6 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
+import history from './History';
 import './Navbar.css';
 
 export default class Navbar extends Component {
@@ -35,22 +36,15 @@ export default class Navbar extends Component {
     }
     )
   }
-
-  // redirect to pokemon details page using the index
-
-  this.handleClick = (e) => {
-    e.preventDefault();
-    this.props.push(`/pokemon/${this.state.index}`);
-  }
-
 }
-    
-// on click of H1 return to home page
 
 render () {
   return (
     <nav className='navigation'>
-      <h1 className='title'>PokeDex</h1>
+        <h1 className='title'
+        onClick={() => history.push('/')}>
+          PokeDex
+        </h1>
         <div className='navSearch'>
           <form>
             <label>

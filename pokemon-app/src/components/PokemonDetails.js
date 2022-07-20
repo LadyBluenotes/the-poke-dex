@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
 
 import './PokemonDetails.css';
 import { 
@@ -213,8 +214,10 @@ export default class PokemonDetails extends Component {
   render() {
     return (
       <main>
-        
           <div className='pokeImg'>
+            <button 
+              className='homeButton'
+            >Back to Home</button>
             <img src={this.state.imageUrl} alt={this.state.name} />
           </div>
           
