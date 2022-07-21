@@ -331,7 +331,7 @@ export default class PokemonDetails extends Component {
               <div className="progress-bar horizontal">
                   <div className="progress-fill"
                     style={{
-                      width : `${this.state.stats.hp}%`,
+                      width: `${this.state.stats.hp/2}%`,
                     }}
                   >
                     <span>{this.state.stats.hp}</span>
@@ -343,7 +343,7 @@ export default class PokemonDetails extends Component {
               <div className="progress-bar horizontal">
                   <div className="progress-fill"
                     style={{
-                      width : `${this.state.stats.attack}%`
+                      width: `${this.state.stats.attack/2}%`,
                     }}
                   >
                     <span>{this.state.stats.attack}</span>
@@ -355,7 +355,7 @@ export default class PokemonDetails extends Component {
               <div className="progress-bar horizontal">
                   <div className="progress-fill"
                     style={{
-                      width : `${this.state.stats.defense}%`
+                      width : `${this.state.stats.defense/2}%`
                     }}
                   >
                     <span>{this.state.stats.defense}</span>
@@ -367,7 +367,7 @@ export default class PokemonDetails extends Component {
               <div className="progress-bar horizontal">
                   <div className="progress-fill"
                     style={{
-                      width : `${this.state.stats.speed}%`
+                      width : `${this.state.stats.speed/2}%`
                     }}
                   >
                     <span>{this.state.stats.speed}</span>
@@ -379,7 +379,7 @@ export default class PokemonDetails extends Component {
               <div className="progress-bar horizontal">
                   <div className="progress-fill-special"
                     style={{
-                      width : `${this.state.stats.specialAttack}%`
+                      width : `${this.state.stats.specialAttack/2}%`
                     }}
                   >
                     <span>{this.state.stats.specialAttack}</span>
@@ -391,7 +391,7 @@ export default class PokemonDetails extends Component {
               <div className="progress-bar horizontal">
                   <div className="progress-fill-special"
                     style={{
-                      width: `${this.state.stats.specialDefense}%`
+                      width: `${this.state.stats.specialDefense/2}%`
                     }}
                   >
                     <span>{this.state.stats.specialDefense}</span>
