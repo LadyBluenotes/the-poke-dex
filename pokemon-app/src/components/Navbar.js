@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import history from './History';
 import './Navbar.css';
 
 export default class Navbar extends Component {
@@ -41,8 +40,7 @@ export default class Navbar extends Component {
 render () {
   return (
     <nav className='navigation'>
-        <h1 className='title'
-        onClick={() => history.push('/')}>
+        <h1 className='title'>
           PokeDex
         </h1>
         <div className='navSearch'>
