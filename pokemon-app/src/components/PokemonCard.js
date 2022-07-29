@@ -1,9 +1,12 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom'; 
 
 import './AllPokemon.css';
+import './Navbar.js';
 
 export default class PokemonCard extends Component {
+
+    // if search is empty, render all pokemon if not, render filtered pokemon
 
     constructor(props) {
         super(props);
@@ -28,19 +31,43 @@ componentDidMount() {
   }
   
     render() {
-        return (
-            <div className='wrapper'>
-                <div className='pokeNameBox'>
-                    <span className='pokemonIdentifier'
-                    onClick={() => window.location.reload()}>
-                        <Link to={`pokemon/${this.state.pokemonIndex}`}>
-                            <h4 className='pokemonIndex'>#{this.state.pokemonIndex.toString().padStart(3, '0')}</h4>
-                            <h4 className='pokemonName'>{this.state.name}</h4>
-                        </Link>
-                    </span>
-                    <img src={this.state.imageUrl} alt={this.state.name} />
+            if (getSearchValue() === '') {
+            return (
+                <div className='wrapper'>
+                    <div className='pokeNameBox'>
+                        <span className='pokemonIdentifier'
+                        onClick={() => window.location.reload()}>
+                            <Link to={`pokemon/${this.state.pokemonIndex}`}>
+                                <h4 className='pokemonIndex'>#{this.state.pokemonIndex.toString().padStart(3, '0')}</h4>
+                                <h4 className='pokemonName'>{this.state.name}</h4>
+                            </Link>
+                        </span>
+                        <img src={this.state.imageUrl} alt={this.state.name} />
+                    </div>
                 </div>
-            </div>
-        )
+            )
+        } else {
+            // if search is not empty, render the filtered pokemon using the res.data.id from searchValue function in Navbar.js
+            if (this.state.pokemonIndex === getSearchValue()) {
+                return (
+                    <div className='wrapper'>
+                        <div className='pokeNameBox'>
+                            <span className='pokemonIdentifier'
+                            onClick={() => window.location.reload()}>
+                                <Link to={`pokemon/${this.state.pokemonIndex}`}>
+                                    <h4 className='pokemonIndex'>#{this.state.pokemonIndex.toString().padStart(3, '0')}</h4>
+                                    <h4 className='pokemonName'>{this.state.name}</h4>
+                                </Link>
+                            </span>
+                            <img src={this.state.imageUrl} alt={this.state.name} />
+                        </div>
+                    </div>
+                )
+            } else {
+                return (
+                    alert ('No Pokemon Found')
+                )
+            }
+        }
     }
 }

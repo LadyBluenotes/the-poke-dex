@@ -2,39 +2,39 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './Navbar.css';
 
-export default class Navbar extends Component {
+class Navbar extends Component {
 
-    constructor(props) {
+  constructor(props) {
       super(props);
       this.state = {
         name: '',
         index: '',
     }
-  
-  this.handleChange = (e) => {
-    this.setState({ name: e.target.value });
-    console.log(e.target.value);
-  }
-
-  this.handleSubmit = (e) => {
-    e.preventDefault();
-    axios.get(`https://pokeapi.co/api/v2/pokemon/${this.state.name}`)
-    .then(res => {
-      console.log(res.data.id);
-      this.setState({
-        name: res.data.name,
-        index: res.data.id,
-      })
-    }).catch(err => {
-      console.log(err);
-    }).finally(() => {
-      this.setState({ 
-        name: '',
-        index: '',
-      });
+    
+    this.handleChange = (e) => {
+      this.setState({ name: e.target.value });
+      console.log(e.target.value);
     }
-    )
-  }
+
+    this.handleSubmit = (e) => {
+      e.preventDefault();
+      axios.get(`https://pokeapi.co/api/v2/pokemon/${this.state.name}`)
+      .then(res => {
+        console.log(res.data.id);
+        this.setState({
+          name: res.data.name,
+          index: res.data.id,
+        })
+      }).catch(err => {
+        console.log(err);
+      }).finally(() => {
+        this.setState({ 
+          name: '',
+          index: '',
+        });
+      }
+      )
+    }
 }
 
 render () {
@@ -63,4 +63,10 @@ render () {
       </nav>
     )
   }
+}
+
+export default Navbar;
+
+export function getSearchValue() {
+ return this.state.idex;
 }
