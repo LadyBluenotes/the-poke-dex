@@ -66,6 +66,7 @@ export default class PokemonDetails extends Component {
       growthRate: '',
       baseExperience: ''
     }
+
   }
 
  async componentDidMount() {
@@ -209,7 +210,7 @@ export default class PokemonDetails extends Component {
     })
     .catch(err => console.log(err));
   }
-  
+
   render() {
     return (
       <main>
@@ -229,7 +230,7 @@ export default class PokemonDetails extends Component {
                 .map(s => s.charAt(0).toUpperCase() + s.substring(1))
                 .join(' ')}
               </h2>
-              <div classname='basicTable'>
+              <div className='basicTable'>
                 <Table>
                   <TableBody>
                     <TableRow>
@@ -270,7 +271,7 @@ export default class PokemonDetails extends Component {
           </div>
                                
         <div className='pokeInfo'>
-          <div classname='pokeTraining'>
+          <div className='pokeTraining'>
             <h3>Training</h3>
             <Table>
               <TableBody>

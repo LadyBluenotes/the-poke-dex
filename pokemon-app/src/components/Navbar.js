@@ -66,7 +66,3 @@ render () {
 }
 
 export default Navbar;
-
-export function getSearchValue() {
- return this.state.idex;
-}

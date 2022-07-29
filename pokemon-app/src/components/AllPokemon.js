@@ -13,7 +13,7 @@ export default class AllPokemon extends Component {
     url: 'https://pokeapi.co/api/v2/pokemon/',
     pokemon: null,
     nextPageUrl: null,
-    prevPageUrl: null
+    prevPageUrl: null,
   };
 
   async componentDidMount() {
