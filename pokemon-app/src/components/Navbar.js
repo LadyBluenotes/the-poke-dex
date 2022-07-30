@@ -1,41 +1,9 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import './Navbar.css';
 
 class Navbar extends Component {
 
-  constructor(props) {
-      super(props);
-      this.state = {
-        name: '',
-        index: '',
-    }
-    
-    this.handleChange = (e) => {
-      this.setState({ name: e.target.value });
-      console.log(e.target.value);
-    }
-
-    this.handleSubmit = (e) => {
-      e.preventDefault();
-      axios.get(`https://pokeapi.co/api/v2/pokemon/${this.state.name}`)
-      .then(res => {
-        console.log(res.data.id);
-        this.setState({
-          name: res.data.name,
-          index: res.data.id,
-        })
-      }).catch(err => {
-        console.log(err);
-      }).finally(() => {
-        this.setState({ 
-          name: '',
-          index: '',
-        });
-      }
-      )
-    }
-}
+  // export name to App.js from search input
 
 render () {
   return (
@@ -46,16 +14,14 @@ render () {
         <div className='navSearch'>
           <form>
             <label>
-              <input
-                type="text"
-                placeholder="Search"
-                value={this.state.name}
-                onChange={this.handleChange}
+              <input 
+                type='text'
+                placeholder='Search'
               />
             </label>
             <button
               type="submit"
-              onClick={this.handleSubmit}
+              onClick={this.props.handleSubmit}
               className='searchButton'
             >Search</button>
           </form>

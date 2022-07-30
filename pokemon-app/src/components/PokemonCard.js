@@ -7,7 +7,7 @@ import Navbar, { props } from './Navbar'
 export default class PokemonCard extends Component {
 
     // if search is empty, render all pokemon if not, render filtered pokemon
-    
+
 
     constructor(props) {
         super(props);
