@@ -1,11 +1,9 @@
-import React, { Component } from 'react';
+import React from 'react';
 import './Navbar.css';
 
-class Navbar extends Component {
+function Navbar({ data }) {
 
-  // export name to App.js from search input
 
-render () {
   return (
     <nav className='navigation'>
         <h1 className='title'>
@@ -17,11 +15,10 @@ render () {
               <input 
                 type='text'
                 placeholder='Search'
-              />
+                />
             </label>
             <button
               type="submit"
-              onClick={this.props.handleSubmit}
               className='searchButton'
             >Search</button>
           </form>
@@ -29,6 +26,5 @@ render () {
       </nav>
     )
   }
-}
 
 export default Navbar;
