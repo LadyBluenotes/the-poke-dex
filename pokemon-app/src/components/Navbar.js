@@ -1,7 +1,7 @@
 import React from 'react';
 import './Navbar.css';
 
-function Navbar({ data }) {
+function Navbar({ search, handleSearch, handleSubmit }) {
 
 
   return (
@@ -15,11 +15,14 @@ function Navbar({ data }) {
               <input 
                 type='text'
                 placeholder='Search'
+                value={search}
+                onChange={handleSearch}
                 />
             </label>
             <button
               type="submit"
               className='searchButton'
+              onClick={handleSubmit}
             >Search</button>
           </form>
         </div>

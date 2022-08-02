@@ -30,7 +30,6 @@ const TYPE_COLORS = {
   steel: 'B5B5C3',
   water: '3295F6'
 };
-
 export default class PokemonDetails extends Component {
 
   constructor(props) {
@@ -69,7 +68,9 @@ export default class PokemonDetails extends Component {
 
   }
 
+
  async componentDidMount() {
+
     const { pokemonIndex } = this.props.match.params;
 
     const pokemonUrl = `https://pokeapi.co/api/v2/pokemon/${pokemonIndex}`;
