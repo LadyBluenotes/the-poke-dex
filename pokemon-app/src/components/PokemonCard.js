@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom'; 
 
 import './AllPokemon.css';
-import { search } from '../App'
 
 export default class PokemonCard extends Component {
 
@@ -22,7 +21,7 @@ export default class PokemonCard extends Component {
 
 
 componentDidMount() {
-    const { name, url, search } = this.props;
+    const { name, url } = this.props;
     const pokemonIndex = url.split('/')[6];
     const imageUrl = `https://img.pokemondb.net/artwork/large/${name}.jpg`;
 
