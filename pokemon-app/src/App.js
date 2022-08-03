@@ -19,6 +19,7 @@ const App = () => {
   const [search, setSearch] = useState('');
   const [pokemonUrl, setPokemonUrl] = useState('');
   const [pokemonName, setPokemonName] = useState('');
+  const [pokemonId, setPokemonId] = useState('');
 
   const handleSearch = (e) => {
     setSearch(e.target.value);
@@ -29,6 +30,7 @@ const App = () => {
     const res = await axios.get(`https://pokeapi.co/api/v2/pokemon/${search}`);
     setPokemonUrl(res.data.species.url);
     setPokemonName(res.data.name);
+    setPokemonId(res.data.id);
     setSearch('');
   }
 
@@ -46,6 +48,7 @@ const App = () => {
                 <AllPokemon
                   pokemonUrl={pokemonUrl}
                   pokemonName={pokemonName}
+                  pokemonId={pokemonId}
                 />
               )}
             />
