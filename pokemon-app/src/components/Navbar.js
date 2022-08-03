@@ -3,7 +3,6 @@ import './Navbar.css';
 
 function Navbar({ search, handleSearch, handleSubmit }) {
 
-
   return (
     <nav className='navigation'>
         <h1 className='title'>
@@ -16,7 +15,9 @@ function Navbar({ search, handleSearch, handleSubmit }) {
                 type='text'
                 placeholder='Search'
                 value={search}
-                onChange={handleSearch}
+                onChange={e => {
+                  handleSearch(e);
+                }}
                 />
             </label>
             <button

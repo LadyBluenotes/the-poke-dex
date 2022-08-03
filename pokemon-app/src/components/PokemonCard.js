@@ -28,7 +28,7 @@ componentDidMount() {
     this.setState({ name: this.capitalize(name), imageUrl, pokemonIndex });
   }
 
-    render() {
+  render() {
             return (
                 <div className='wrapper'>
                     <div className='pokeNameBox'>
@@ -44,4 +44,5 @@ componentDidMount() {
                 </div>
             )
         }
-    }
+    } 
+

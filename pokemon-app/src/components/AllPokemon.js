@@ -54,8 +54,10 @@ export default class AllPokemon extends Component {
     });
   }
 
+
   render() {
     return (
+      console.log(this.props.pokemonUrl),
       <>
         <Grid 
         container
@@ -77,6 +79,12 @@ export default class AllPokemon extends Component {
                 />
             </Grid>
             ))
+        ) : this.props.pokemonName ? (
+            <PokemonCard
+              key={this.props.pokemonName}
+              name={this.props.pokemonName}
+              url={this.props.pokemonUrl}
+            />
         ) : (
           <p>Loading...</p>
         )}
