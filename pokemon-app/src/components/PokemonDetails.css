@@ -1,7 +1,6 @@
 main {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
     grid-auto-rows: auto;
     grid-gap: 1rem;
     background-color: white;
@@ -22,12 +21,12 @@ main {
 
 .pokeInfo {
     padding-left: 5%;
-    height: 200px;
+    height: 275px;
 }
 
 .pokeTraining {
     width: 45%;
-    height: 200px;
+    height: 250px;
 }
 
 .pokeBreeding{
@@ -130,13 +129,5 @@ h3 {
     .pokeBreeding {
         margin-top: 10%;
     }
-
-}
-
-@media (min-width: 581px) and (max-width: 850px) {
-
-}
-
-@media (min-width: 851px) and (max-width: 1200px) {
 
 }
