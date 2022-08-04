@@ -68,6 +68,12 @@ export default class PokemonDetails extends Component {
 
   }
 
+  goBack = () => {
+    this.props.history.push('/');
+    // reload page
+    window.location.reload();
+  }
+
 
  async componentDidMount() {
 
@@ -218,6 +224,7 @@ export default class PokemonDetails extends Component {
           <div className='pokeImg'>
             <button 
               className='homeButton'
+              onClick={this.goBack}
               >
                 Back to Home
               </button>
