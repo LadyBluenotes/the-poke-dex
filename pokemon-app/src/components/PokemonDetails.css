@@ -111,6 +111,12 @@ h3 {
     margin-bottom: 5px;
   }
 
+  .homeButton {
+    position: absolute;
+    top: 90px;
+    left: 20px;
+  }
+
 @media (min-width: 310px) and (max-width: 580px) {
 
     main {
