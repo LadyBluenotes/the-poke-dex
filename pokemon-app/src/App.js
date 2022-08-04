@@ -46,7 +46,7 @@ const App = () => {
               exact path="/" 
               render={() => (
                 <AllPokemon
-                  pokemonUrl={pokemonUrl}
+                  url={pokemonUrl}
                   pokemonName={pokemonName}
                   pokemonId={pokemonId}
                 />

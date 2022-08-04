@@ -57,7 +57,7 @@ export default class AllPokemon extends Component {
 
   render() {
     return (
-      console.log(this.props.pokemonUrl),
+      console.log(this.props),
       <>
         <Grid 
         container
@@ -66,7 +66,13 @@ export default class AllPokemon extends Component {
         alignItems="center"
         spacing={1}
           >
-        {this.state.pokemon ? (
+        {this.props.pokemonName ? (
+                <PokemonCard
+                  key={this.props.pokemonName}
+                  name={this.props.pokemonName}
+                  url={this.props.url}
+                />
+        ) : this.state.pokemon ? (
           this.state.pokemon.map(pokemon => (
             <Grid 
               item 
@@ -79,12 +85,6 @@ export default class AllPokemon extends Component {
                 />
             </Grid>
             ))
-        ) : this.props.pokemonName ? (
-            <PokemonCard
-              key={this.props.pokemonName}
-              name={this.props.pokemonName}
-              url={this.props.pokemonUrl}
-            />
         ) : (
           <p>Loading...</p>
         )}
