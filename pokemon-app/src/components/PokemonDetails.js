@@ -154,8 +154,8 @@ export default class PokemonDetails extends Component {
         let description = '';
         res.data.flavor_text_entries.some(flavor => {
           if (flavor.language.name === 'en') {
-            description = flavor.flavor_text;
-            return;
+          description = flavor.flavor_text;
+          return description;
           }
       })
 
