@@ -26,7 +26,7 @@ main {
 
 .pokeTraining {
     width: 45%;
-    height: 250px;
+    height: 300px;
 }
 
 .pokeBreeding{
@@ -129,7 +129,7 @@ h3 {
     }
 
     .pokeInfo {
-        height: 200px;
+        height: 400px;
     }
 
     .pokeBreeding {
