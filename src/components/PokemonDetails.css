@@ -137,3 +137,12 @@ h3 {
     }
 
 }
+
+@media (min-width: 310px) and (max-width:700px) {
+    .pokeInfo{
+        height: 400px;
+    }
+     .pokeBreeding, .pokeTraining{
+        height: 400px;
+     }
+}
