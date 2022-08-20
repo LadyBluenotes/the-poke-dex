@@ -22,9 +22,9 @@ function Navbar({ search, handleSearch, handleSubmit }) {
             </label>
             <button
               type="submit"
-              className='searchButton'
+              className='searchButton, material-symbols-outlined'
               onClick={handleSubmit}
-            >Search</button>
+            >search</button>
           </form>
         </div>
       </nav>
