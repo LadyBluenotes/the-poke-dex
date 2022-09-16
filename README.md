@@ -22,7 +22,8 @@ This project was inspired by a tutorial done by Arslan on youtube, but design an
 
 ## Optimizations
 
-In this project, some optimizations that could be done include showcasing the page of pokemon that is being show, updating the button so that it is better placed and reducing the whitespace such as increasing the side of the photos in the detail page.
+* As user searches, auto fill suggestions to help user spell pokemon name.
+* Reducing whitespace that is present within the pokemon details page.
 
 ## Lessons Learned
 
