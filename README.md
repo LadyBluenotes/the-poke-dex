@@ -4,8 +4,6 @@ Using the PokeApi, a PokeDex was created to showcase all pokemon and their stats
 
 https://user-images.githubusercontent.com/98355961/182989836-201d6a65-1a76-4294-8e7f-2c9a2a7fdc7c.mp4
 
-See the live site [here](https://checkingweather.netlify.app/).
-
 ## Table of Contents
 
 * [General Info](#general-information)
