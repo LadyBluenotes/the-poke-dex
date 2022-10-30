@@ -9,6 +9,9 @@ import {
   TableHead,
   TableRow,
  } from '@mui/material';
+import { getStats } from '../components/pokemon/helpers/getStats';
+import { PokemonStat } from '../components/pokemon/PokemonStat';
+import { getPokemon } from '../components/pokemon/api/getPokemon';
 
 const TYPE_COLORS = {
   bug: 'B1C12E',
@@ -79,10 +82,9 @@ export default class PokemonDetails extends Component {
 
     const { pokemonIndex } = this.props.match.params;
 
-    const pokemonUrl = `https://pokeapi.co/api/v2/pokemon/${pokemonIndex}`;
     const pokemonSpeciesUrl = `https://pokeapi.co/api/v2/pokemon-species/${pokemonIndex}/`;
 
-    const pokemonRes = await axios.get(pokemonUrl)
+    const pokemonRes = await getPokemon();
 
     const name = pokemonRes.data.name
     const imageUrl = pokemonRes.data.sprites.front_default;
@@ -90,30 +92,7 @@ export default class PokemonDetails extends Component {
 
     let { hp, attack, defense, speed, specialAttack, specialDefense } = '';
 
-    pokemonRes.data.stats.map(stat => {
-      switch (stat.stat.name) {
-        case 'hp':
-          hp = stat['base_stat'];
-          break;
-        case 'attack':
-          attack = stat['base_stat'];
-          break;
-        case 'defense':
-          defense = stat['base_stat'];
-          break;
-        case 'speed':
-          speed = stat['base_stat'];
-          break;
-        case 'special-attack':
-          specialAttack = stat['base_stat'];
-          break;
-        case 'special-defense':
-          specialDefense = stat['base_stat'];
-          break;
-        default:
-          break;
-      }
-    });
+    pokemonRes.data.stats.map(getStats());
 
     const height = (pokemonRes.data.height/10).toFixed(2);
     const weight = (pokemonRes.data.weight/10).toFixed(2); ;
@@ -260,14 +239,17 @@ export default class PokemonDetails extends Component {
                         </div>
                       </TableCell>
                     </TableRow>
+
                     <TableRow>
                       <TableHead>Height</TableHead>
                       <TableCell>{`${this.state.height}m ( ${(this.state.height * 3.28).toFixed(2)}ft )`}</TableCell>
                     </TableRow>
+
                     <TableRow>
                       <TableHead>Weight</TableHead>
                       <TableCell>{`${this.state.weight}kg ( ${((this.state.weight) * 2.20).toFixed(2)}lb )`}</TableCell>
                     </TableRow>
+
                     <TableRow>
                       <TableHead>Abilities</TableHead>
                       <TableCell>{this.state.abilities}
@@ -336,78 +318,17 @@ export default class PokemonDetails extends Component {
         <div className='pokeStats'>
           <h3>Base Stats</h3>
           <div>
-            <p>
-              <span className='stateTitle'>HP</span>
-              <div className="progress-bar horizontal">
-                  <div className="progress-fill"
-                    style={{
-                      width: `${this.state.stats.hp/2}%`,
-                    }}
-                  >
-                    <span>{this.state.stats.hp}</span>
-                  </div>
-              </div>
-            </p>
-            <p>
-              <span className='stateTitle'>Attack</span>
-              <div className="progress-bar horizontal">
-                  <div className="progress-fill"
-                    style={{
-                      width: `${this.state.stats.attack/2}%`,
-                    }}
-                  >
-                    <span>{this.state.stats.attack}</span>
-                  </div>
-              </div>
-            </p>
-            <p>
-              <span className='stateTitle'>Defense</span>
-              <div className="progress-bar horizontal">
-                  <div className="progress-fill"
-                    style={{
-                      width : `${this.state.stats.defense/2}%`
-                    }}
-                  >
-                    <span>{this.state.stats.defense}</span>
-                  </div>
-              </div>
-            </p>
-            <p>
-              <span className='stateTitle'>Speed</span>
-              <div className="progress-bar horizontal">
-                  <div className="progress-fill"
-                    style={{
-                      width : `${this.state.stats.speed/2}%`
-                    }}
-                  >
-                    <span>{this.state.stats.speed}</span>
-                  </div>
-              </div>
-            </p>
-            <p>
-              <span className='stateTitle'>Special Attack</span>
-              <div className="progress-bar horizontal">
-                  <div className="progress-fill-special"
-                    style={{
-                      width : `${this.state.stats.specialAttack/2}%`
-                    }}
-                  >
-                    <span>{this.state.stats.specialAttack}</span>
-                  </div>
-              </div>
-            </p>
-            <p>
-              <span className='stateTitle'>Special Defense</span>
-              <div className="progress-bar horizontal">
-                  <div className="progress-fill-special"
-                    style={{
-                      width: `${this.state.stats.specialDefense/2}%`
-                    }}
-                  >
-                    <span>{this.state.stats.specialDefense}</span>
-                  </div>
-              </div>
-            </p>
+            <PokemonStat title='HP' value={this.state.stats.hp} />
+
+            <PokemonStat title='Attack' value={this.state.stats.attack} />
+
+            <PokemonStat title='Defense' value={this.state.stats.defense} />
+
+            <PokemonStat title='Speed' value={this.state.stats.speed} />
+
+            <PokemonStat title='Special Attack' value={this.state.stats.specialAttack} />
+
+            <PokemonStat title='Special Defense' value={this.state.stats.specialDefense} />
           </div>
         </div>
       </main>
