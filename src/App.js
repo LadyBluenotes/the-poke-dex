@@ -1,9 +1,9 @@
-import { 
+import {
   BrowserRouter as Router,
   Route,
   Switch
 } from 'react-router-dom';
-import { useState } from 'react';
+import { lazy, Suspense, useState } from 'react';
 import axios from 'axios';
 
 import './App.css';
@@ -13,9 +13,6 @@ import AllPokemon from './components/AllPokemon';
 import PokemonDetails from './components/PokemonDetails'
 
 const App = () => {
-
-  // function and setstates for search
-
   const [search, setSearch] = useState('');
   const [pokemonUrl, setPokemonUrl] = useState('');
   const [pokemonName, setPokemonName] = useState('');
@@ -41,22 +38,24 @@ const App = () => {
         handleSubmit={handleSubmit}
         search={search}
       />
-        <Switch>
-            <Route 
-              exact path="/" 
-              render={() => (
-                <AllPokemon
-                  url={pokemonUrl}
-                  pokemonName={pokemonName}
-                  pokemonId={pokemonId}
-                />
-              )}
-            />
-            <Route 
+
+      <Switch>
+          <Route
+            exact path="/"
+            render={() => (
+              <AllPokemon
+                url={pokemonUrl}
+                pokemonName={pokemonName}
+                pokemonId={pokemonId}
+              />
+            )}
+          />
+
+          <Route
             path="/pokemon/:pokemonIndex"
-            component={props => <PokemonDetails { ... props} />}
-            />
-        </Switch>
+            component={props => <PokemonDetails {...props} />}
+          />
+      </Switch>
     </Router>
   );
 }
